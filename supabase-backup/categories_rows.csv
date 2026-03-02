@@ -1,0 +1,10 @@
+id,name_ku,name_ar,name_en,color,icon_name,display_order,is_active,description_ku,description_ar,description_en,created_at,updated_at,created_by,updated_by,topics_section_title_ku,topics_section_title_ar,topics_section_title_en
+culture,کلتور,الثقافة,Culture,bg-teal-600,Globe,8,true,,,,2025-11-25 23:35:02.391782+00,2025-11-25 23:35:02.391782+00,,,,,
+driving,مۆڵەتی شۆفێری,أجازة السياقة,Driving Licence,bg-sky-600,FileText,0,true,,,,2025-11-25 23:40:38.056764+00,2026-01-10 15:03:59.50023+00,d1158ca3-751a-40d3-94f7-b6725eb0d971,d1158ca3-751a-40d3-94f7-b6725eb0d971,,,
+education,پەروەردە,التعليم,Education,bg-rose-600,GraduationCap,4,true,,,,2025-11-25 23:35:02.391782+00,2025-11-25 23:35:02.391782+00,,,,,
+emergency,ناوچە,طوارئ,Emergency,bg-blue-600,Phone,9,true,,,,2025-11-25 23:35:02.391782+00,2025-11-25 23:35:02.391782+00,,,,,
+financial,محاسيب,المالية,Financial,bg-purple-600,Wallet,7,true,,,,2025-11-25 23:35:02.391782+00,2025-12-14 11:56:45.639696+00,,d1158ca3-751a-40d3-94f7-b6725eb0d971,,,
+healthcare,چاودێری تەندروستی,الرعاية الصحية,Healthcare,bg-pink-500,Heart,5,true,,,,2025-11-25 23:35:02.391782+00,2025-11-25 23:35:02.391782+00,,,,,
+housing,نیشتەجێبوون,السكن,Housing,bg-purple-600,Home,2,true,دۆزینەوەی خانوو,,,2025-11-25 23:35:02.391782+00,2025-12-04 19:49:25.103708+00,,d1158ca3-751a-40d3-94f7-b6725eb0d971,,,
+immigration,کۆچبەری,الهجرة,Immigration,bg-blue-600,FileText,1,true,,,,2025-11-25 23:35:02.391782+00,2025-11-28 22:44:10.931924+00,,d1158ca3-751a-40d3-94f7-b6725eb0d971,Settling in the UK,الاستقرار في المملكة المتحدة,نیشتەجێبوون لە بەریتانیا
+travel,گەشتکردن,السفر,Travel,bg-blue-600,FileText,0,true,,,,2025-12-16 09:06:46.553923+00,2025-12-27 12:16:29.729705+00,d1158ca3-751a-40d3-94f7-b6725eb0d971,d1158ca3-751a-40d3-94f7-b6725eb0d971,,,

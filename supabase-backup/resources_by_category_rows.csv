@@ -1,0 +1,885 @@
+id,category_id,language,title,slug,html_content,description,external_link,phone,email,source,display_order,created_at,updated_at
+05f7f8de-a78d-4adc-8062-d2133b22d38a,housing,ku,یارمەتی کرێ (Housing Benefit),housing-benefit,"<div>
+        <h2>یارمەتی کرێ (Housing Benefit)</h2>
+        <p>Housing Benefit یارمەتییەکی دارایییە بۆ یارمەتی کردن لە پارەدانی کرێی خانوو.</p>
+        <h3>کێ دەتوانێت داوای بکات:</h3>
+        <ul>
+            <li>کەسانی بەدەرهاتوو</li>
+            <li>کەسانی بێکار</li>
+            <li>کەسانی بە کرێژن</li>
+        </ul>
+        <h3>چۆن داوای بکەیت:</h3>
+        <ol>
+            <li>سەردانی کۆنسڵی ناوچەکەت بکە</li>
+            <li>فۆرمی Housing Benefit پر بکە</li>
+            <li>بەڵگەنامە پێویستەکان بنێرە</li>
+        </ol>
+    </div>",یارمەتی کرێ بۆ کەسانی بەدەرهاتوو,https://www.gov.uk/housing-benefit,,,UK Government,1,2025-11-13 10:54:28.324766+00,2025-11-13 10:54:28.324766+00
+072d899c-ada7-441e-b70c-61b26e8dc040,driving,ku,مامۆستاکانی شۆفێری,driving-instructors,NA,,,,,,0,2025-11-28 14:45:06.598485+00,2025-11-28 14:45:41.527427+00
+074c7280-fabe-457f-a70f-bc74ed033a43,housing,ku,باجی کۆنسڵ (Council Tax),council-tax,"<div>
+        <h2>باجی کۆنسڵ (Council Tax)</h2>
+        <p>Council Tax باجێکە کە بۆ خزمەتگوزاریەکانی کۆنسڵ دەدرێت.</p>
+        <h3>ئەگەری کەمکردنەوە:</h3>
+        <ul>
+            <li>تەنهاژنان</li>
+            <li>بێکاربوون</li>
+            <li>کەمبوونی داهات</li>
+        </ul>
+    </div>",زانیاری دەربارەی باجی کۆنسڵ,https://www.gov.uk/council-tax,,,UK Government,2,2025-11-13 10:54:28.324766+00,2025-11-13 10:54:28.324766+00
+18b514cb-93ad-4d3a-9573-533d59b19dcb,healthcare,ar,العثور على طبيب,find-a-doctor,"<div>
+        <h2>العثور على طبيب</h2>
+        <p>العثور على GP أو طبيب العائلة يساعدك في استخدام الخدمات الصحية.</p>
+        <h3>كيف تجده:</h3>
+        <ul>
+            <li>قم بزيارة موقع NHS</li>
+            <li>اكتب عنوانك</li>
+            <li>شاهد قائمة GP</li>
+            <li>اختر GP قريب منك</li>
+        </ul>
+    </div>",العثور على طبيب قريب,https://www.nhs.uk/service-search/find-a-gp,,,NHS,2,2025-11-13 10:54:28.324766+00,2025-11-13 10:54:28.324766+00
+547007b3-7c54-4273-8139-3d473f5b79ec,housing,ar,مساعدة الإيجار (Housing Benefit),housing-benefit,"<div>
+        <h2>مساعدة الإيجار (Housing Benefit)</h2>
+        <p>Housing Benefit هي مساعدة مالية لمساعدتك في دفع إيجار المنزل.</p>
+        <h3>من يمكنه التقديم:</h3>
+        <ul>
+            <li>الأشخاص المحتاجين</li>
+            <li>العاطلين عن العمل</li>
+            <li>المستأجرين</li>
+        </ul>
+        <h3>كيفية التقديم:</h3>
+        <ol>
+            <li>قم بزيارة مجلس منطقتك</li>
+            <li>املأ نموذج Housing Benefit</li>
+            <li>أرسل المستندات المطلوبة</li>
+        </ol>
+    </div>",مساعدة الإيجار للأشخاص المحتاجين,https://www.gov.uk/housing-benefit,,,UK Government,1,2025-11-13 10:54:28.324766+00,2025-11-13 10:54:28.324766+00
+7f803e74-97cf-4416-8f57-092daee20cfc,healthcare,ku,چۆنیەتی ناساندن بە GP,how-to-register-with-gp,"<!-- 
+  Formatted HTML content for GP Registration resource
+  This can be inserted into the html_content field in Supabase
+  Designed to work with the app's Tailwind CSS and RTL support
+  Note: The outer container and title are handled by ResourceDetail page
+-->
+
+<div class=""space-y-4"" dir=""rtl"">
+  
+  <!-- Quick Facts Card -->
+  <div class=""bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-5 shadow-sm border border-indigo-100/50"">
+    <h3 class=""text-xl font-bold text-slate-900 mb-4 flex items-center gap-2"" dir=""rtl"">
+      <span class=""w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full""></span>
+      بۆ کێیە؟
+    </h3>
+    <div class=""space-y-3"">
+      <div class=""flex items-start gap-3 p-4 bg-white rounded-xl border border-indigo-200/50 shadow-sm"">
+        <div class=""flex-shrink-0 w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center text-lg font-bold"">
+          👥
+        </div>
+        <div class=""flex-1"" dir=""rtl"">
+          <p class=""font-semibold text-slate-900 mb-1"">کێ؟</p>
+          <p class=""text-sm text-slate-700"">هەموو کەسێک لە ئینگلتەرا (بە داواکارانی پەنابەریشەوە)</p>
+        </div>
+      </div>
+      
+      <div class=""flex items-start gap-3 p-4 bg-white rounded-xl border border-indigo-200/50 shadow-sm"">
+        <div class=""flex-shrink-0 w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center text-lg font-bold"">
+          🆔
+        </div>
+        <div class=""flex-1"" dir=""rtl"">
+          <p class=""font-semibold text-slate-900 mb-1"">بەڵگەنامە؟</p>
+          <p class=""text-sm text-slate-700""><strong class=""text-indigo-700"">هیچ شتێک پێویست نییە.</strong> پێویستت بە ناسنامە، بەڵگەی ناونیشان، یان ژمارەی <span dir=""ltr"">NHS</span> نییە.</p>
+        </div>
+      </div>
+      
+      <div class=""flex items-start gap-3 p-4 bg-white rounded-xl border border-indigo-200/50 shadow-sm"">
+        <div class=""flex-shrink-0 w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center text-lg font-bold"">
+          💰
+        </div>
+        <div class=""flex-1"" dir=""rtl"">
+          <p class=""font-semibold text-slate-900 mb-1"">نرخ؟</p>
+          <p class=""text-sm text-slate-700"">خۆڕایی</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step-by-Step Card -->
+  <div class=""bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl shadow-sm border border-slate-200/50 overflow-hidden"">
+    <div class=""p-5 pb-0"">
+      <h3 class=""text-xl font-bold text-slate-900 mb-4 flex items-center gap-2"" dir=""rtl"">
+        <span class=""w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full""></span>
+        چۆنیەتی ئەنجامدانی؟
+      </h3>
+    </div>
+    <div class=""divide-y divide-slate-200"">
+      
+       <!-- Step 1 -->
+       <details class=""group"" open>
+         <summary class=""flex items-center justify-between p-5 font-semibold cursor-pointer hover:bg-white/50 transition-colors"" dir=""rtl"" style=""direction: rtl !important;"">
+           <div class=""flex items-center gap-3 flex-1"" style=""direction: rtl !important;"">
+             <div class=""flex-shrink-0 w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold"" style=""direction: ltr !important; transform: none !important;"">
+               1
+             </div>
+             <span class=""text-slate-900"" style=""direction: rtl !important; unicode-bidi: embed; transform: none !important;"">نۆرینگەیەکی <span dir=""ltr"" style=""direction: ltr !important; unicode-bidi: embed; transform: none !important;"">GP</span> بدۆزەرەوە</span>
+           </div>
+           <span class=""text-slate-500 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-2 arrow-icon"" style=""direction: ltr !important; display: inline-block;"">▼</span>
+         </summary>
+        <div class=""px-5 pb-5 pt-0 text-slate-700 leading-relaxed"" dir=""rtl"">
+          <p>ئامرازی <span dir=""ltr"">'Find a GP'</span> لە ماڵپەڕی <span dir=""ltr"">NHS</span> بەکاربهێنە بۆ دۆزینەوەی نۆرینگە لە نزیک کۆدی پۆستەی خۆت. زۆربەی خەڵک لە نزیک شوێنی نیشتەجێبوونیان خۆیان تۆمار دەکەن.</p>
+        </div>
+      </details>
+
+       <!-- Step 2 -->
+       <details class=""group"">
+         <summary class=""flex items-center justify-between p-5 font-semibold cursor-pointer hover:bg-white/50 transition-colors"" dir=""rtl"" style=""direction: rtl !important;"">
+           <div class=""flex items-center gap-3 flex-1"" style=""direction: rtl !important;"">
+             <div class=""flex-shrink-0 w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold"" style=""direction: ltr !important; transform: none !important;"">
+               2
+             </div>
+             <span class=""text-slate-900"" style=""direction: rtl !important; unicode-bidi: embed; transform: none !important;"">فۆڕمی تۆمارکردن پڕ بکەرەوە</span>
+           </div>
+           <span class=""text-slate-500 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-2 arrow-icon"" style=""direction: ltr !important; display: inline-block;"">▼</span>
+         </summary>
+        <div class=""px-5 pb-5 pt-0 text-slate-700 leading-relaxed"" dir=""rtl"">
+          <p>زۆربەی نۆرینگەکان داوات لێدەکەن فۆرمێک بە ناوی <span dir=""ltr"">'GMS1'</span> پڕ بکەیتەوە. زۆرجار دەتوانیت ئەمە لە پێشوازی نۆرینگەکە یان ماڵپەڕەکەیان وەربگریت. هەروەها زۆر نۆرینگە ڕێگەت پێدەدەن ئۆنلاین خۆت تۆمار بکەیت.</p>
+        </div>
+      </details>
+
+       <!-- Step 3 -->
+       <details class=""group"">
+         <summary class=""flex items-center justify-between p-5 font-semibold cursor-pointer hover:bg-white/50 transition-colors"" dir=""rtl"" style=""direction: rtl !important;"">
+           <div class=""flex items-center gap-3 flex-1"" style=""direction: rtl !important;"">
+             <div class=""flex-shrink-0 w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold"" style=""direction: ltr !important; transform: none !important;"">
+               3
+             </div>
+             <span class=""text-slate-900"" style=""direction: rtl !important; unicode-bidi: embed; transform: none !important;"">فۆڕمەکە پێشکەش بکە</span>
+           </div>
+           <span class=""text-slate-500 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-2 arrow-icon"" style=""direction: ltr !important; display: inline-block;"">▼</span>
+         </summary>
+        <div class=""px-5 pb-5 pt-0 text-slate-700 leading-relaxed"" dir=""rtl"">
+          <p>فۆڕمەکە بدەرەوە بە نۆرینگەکە. بە گشتی نزیکەی <span dir=""ltr"">٥</span> ڕۆژی پێدەچێت تا تۆمار دەکرێیت. ئەوان پەیوەندیت پێوە دەکەن بۆ دڵنیاکردنەوە.</p>
+        </div>
+      </details>
+      
+    </div>
+  </div>
+
+  <!-- Other Registration Methods -->
+  <div class=""bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-5 shadow-sm border border-indigo-100/50"">
+    <h3 class=""text-xl font-bold text-slate-900 mb-4 flex items-center gap-2"" dir=""rtl"">
+      <span class=""w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full""></span>
+      ڕێگاکانی تری تۆمارکردن
+    </h3>
+    <div class=""space-y-3"">
+      <div class=""flex items-start gap-3 p-4 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl border border-slate-200/50"">
+        <div class=""flex-shrink-0 w-10 h-10 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-lg"">
+          ⏱️
+        </div>
+        <div class=""flex-1"" dir=""rtl"">
+          <p class=""font-semibold text-slate-900 mb-1"">وەک نەخۆشێکی کاتی</p>
+          <p class=""text-sm text-slate-700"">دەتوانیت بە شێوەیەکی کاتی بۆ ماوەی <span dir=""ltr"">٣</span> مانگ خۆت تۆمار بکەیت. ئەمە بەسوودە ئەگەر سەردانی ناوچەیەک دەکەیت یان ناتەوێت پزیشکی <span dir=""ltr"">GP</span> سەرەکی خۆت بگۆڕیت.</p>
+        </div>
+      </div>
+      
+      <div class=""flex items-start gap-3 p-4 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl border border-slate-200/50"">
+        <div class=""flex-shrink-0 w-10 h-10 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-lg"">
+          👶
+        </div>
+        <div class=""flex-1"" dir=""rtl"">
+          <p class=""font-semibold text-slate-900 mb-1"">تۆمارکردنی منداڵ (خوار <span dir=""ltr"">16</span> ساڵ)</p>
+          <p class=""text-sm text-slate-700"">منداڵان لەلایەن دایک/باوک یان سەرپەرشتیارەوە تۆمار دەکرێن. ڕەنگە داوای ناسنامەی لەدایکبوون یان ''پەرتووکی سوور'' (تۆماری تەندروستی منداڵ) لێبکرێت.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Important Info Card -->
+  <div class=""bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-5 shadow-sm border border-blue-200/50"">
+    <h3 class=""text-xl font-bold text-slate-900 mb-4 flex items-center gap-2"" dir=""rtl"">
+      <span class=""w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full""></span>
+      زانیاری گرنگ
+    </h3>
+    <div class=""bg-gradient-to-br from-blue-50 to-indigo-50 border-r-4 border-blue-500 p-5 rounded-xl"" dir=""rtl"">
+      <div class=""flex gap-3"">
+        <div class=""flex-shrink-0"">
+          <span class=""text-2xl"">ℹ️</span>
+        </div>
+        <div class=""flex-1 text-slate-700 space-y-2"">
+          <ul class=""list-disc list-outside space-y-2 pr-6"" style=""list-style-position: outside;"">
+            <li>ئەگەر ناونیشانی هەمیشەییت نییە، دەتوانیت ناونیشانێکی کاتی یان ناونیشانی نۆرینگەی <span dir=""ltr"">GP</span> خۆی بەکاربهێنیت.</li>
+            <li>نۆرینگەیەک تەنها دەتوانێت تۆمارکردنت ڕەت بکاتەوە ئەگەر زۆر دوور بژیت یان لیستی نەخۆشەکانیان پڕ بووبێتەوە.</li>
+            <li><strong class=""text-slate-900"">ناتوانن</strong> لەبەر ڕەگەزنامەکەت، دۆخی کۆچبەریت، یان نەبوونی بەڵگەنامە ڕەتت بکەنەوە.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- What if Refused Card -->
+  <div class=""bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-5 shadow-sm border border-slate-200/50"">
+    <h3 class=""text-xl font-bold text-slate-900 mb-4 flex items-center gap-2"" dir=""rtl"">
+      <span class=""w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full""></span...",زانیاری دەربارەی چۆنیەتی ناساندن بە دکتۆری خێزانی,https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/,,,NHS,1,2025-11-13 10:54:28.324766+00,2025-11-13 11:56:59.87126+00
+8994c900-c80d-4d6f-ac8f-86d35abec5d8,housing,ar,ضريبة المجلس (Council Tax),council-tax,"<div>
+        <h2>ضريبة المجلس (Council Tax)</h2>
+        <p>Council Tax هي ضريبة تدفع لخدمات المجلس.</p>
+        <h3>إمكانية التخفيض:</h3>
+        <ul>
+            <li>العيش وحيداً</li>
+            <li>البطالة</li>
+            <li>انخفاض الدخل</li>
+        </ul>
+    </div>",معلومات حول ضريبة المجلس,https://www.gov.uk/council-tax,,,UK Government,2,2025-11-13 10:54:28.324766+00,2025-11-13 10:54:28.324766+00
+973eb279-390a-434e-99a5-8bb5ddcec0d3,driving,ku,ڕێبەری وەرگرتنی مۆڵەت,,"<!DOCTYPE html>
+<html lang=""ku"" dir=""rtl"">
+<head>
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <title>Full Driving License Guide (Kurdish)</title>
+    <!-- Load Tailwind CSS with Typography -->
+    <script src=""https://cdn.tailwindcss.com?plugins=typography""></script>
+    <!-- Load Phosphor Icons -->
+    <script src=""https://unpkg.com/@phosphor-icons/web""></script>
+    
+    <style>
+        /* Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        
+        /* Kurdish Font */
+        html[dir=""rtl""] body {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+        }
+
+        /* Step Number Badge */
+        .step-badge {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        /* Image Container styling */
+        .step-image-container {
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            margin-top: 1rem;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body class=""p-4 md:p-8 pb-24"">
+
+    <div class=""max-w-md mx-auto bg-gray-50 rounded-2xl shadow-xl overflow-hidden relative min-h-screen"">
+        
+        <!-- Header -->
+        <header class=""sticky top-0 z-40 bg-white text-gray-800 p-4 shadow-sm flex items-center border-b border-gray-200"">
+            <button class=""absolute left-4 rtl:left-auto rtl:right-4"">
+                <i class=""ph ph-arrow-right text-2xl text-gray-600 rtl:rotate-180""></i>
+            </button>
+            <h1 class=""text-lg font-bold text-center w-full"">ڕێبەری وەرگرتنی مۆڵەت</h1>
+        </header>
+
+        <main class=""p-5 space-y-6 ltr:text-left rtl:text-right"">
+
+            <!-- Intro Card -->
+            <div class=""bg-white rounded-xl p-5 shadow-sm border border-indigo-100"">
+                <h2 class=""text-2xl font-bold text-gray-900 mb-2"">
+                    چۆنیەتی وەرگرتنی مۆڵەتی شۆفێری تەواو
+                </h2>
+                <div class=""prose prose-indigo max-w-none text-gray-700 text-sm"">
+                    <p>بە پەیڕەوکردنی ئەم هەنگاوانە، دەتوانیت بە متمانە و ئاسانی پڕۆسەی وەرگرتنی مۆڵەتی شۆفێری تێپەڕێنیت.</p>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class=""relative py-4"">
+                <div class=""absolute inset-0 flex items-center"">
+                    <div class=""w-full border-t border-gray-300""></div>
+                </div>
+                <div class=""relative flex justify-center"">
+                    <span class=""bg-f3f4f6 px-4 text-sm text-gray-500 font-medium"">قۆناغی ١: مۆڵەتی کاتی</span>
+                </div>
+            </div>
+
+            <!-- Step 1 -->
+            <div class=""bg-white rounded-xl overflow-hidden shadow-md border border-gray-200"">
+                <div class=""p-4 border-b border-gray-100 flex items-center gap-3"">
+                    <div class=""step-badge"">1</div>
+                    <h3 class=""font-bold text-lg text-gray-800"">تێگەیشتن لە مەرجەکان</h3>
+                </div>
+                <div class=""p-4 space-y-3"">
+                    <p class=""text-gray-600 text-sm"">پێش هەموو شتێک دڵنیابە لەوەی شیاویت:</p>
+                    <ul class=""list-disc list-inside text-sm text-gray-600 space-y-1"">
+                        <li>تەمەنت لانی کەم ١٥ ساڵ و ٩ مانگ بێت.</li>
+                        <li>بتوانیت ژمارەی تابلۆی ئۆتۆمبێل لە دووری ٢٠ مەترەوە بخوێنیتەوە.</li>
+                        <li>لانی کەم ١٨٥ ڕۆژ مۆڵەتی مانەوەت لە بەریتانیا هەبێت.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class=""bg-white rounded-xl overflow-hidden shadow-md border border-gray-200"">
+                <div class=""p-4 border-b border-gray-100 flex items-center gap-3"">
+                    <div class=""step-badge"">2</div>
+                    <h3 class=""font-bold text-lg text-gray-800"">ئامادەکردنی بەڵگەنامەکان</h3>
+                </div>
+                <div class=""p-4 space-y-3"">
+                    <p class=""text-gray-600 text-sm"">ئەم بەڵگەنامانە ئامادە بکە:</p>
+                    <ul class=""list-disc list-inside text-sm text-gray-600 space-y-1"">
+                        <li>ناسنامە (پاسپۆرت یان ناسنامەی لەدایکبوون).</li>
+                        <li>بەڵگەی ناونیشان (بۆ ٣ ساڵی ڕابردوو).</li>
+                        <li>ژمارەی بیمەی نیشتمانی (<span dir=""ltr"">NI Number</span>).</li>
+                    </ul>
+                    <div class=""step-image-container bg-indigo-50 border-indigo-100"">
+                        <i class=""ph ph-files text-4xl text-indigo-300""></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class=""relative py-4"">
+                <div class=""absolute inset-0 flex items-center"">
+                    <div class=""w-full border-t border-gray-300""></div>
+                </div>
+                <div class=""relative flex justify-center"">
+                    <span class=""bg-f3f4f6 px-4 text-sm text-gray-500 font-medium"">قۆناغی ٢: تاقیکردنەوەی تیۆری</span>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class=""bg-white rounded-xl overflow-hidden shadow-md border border-gray-200"">
+                <div class=""p-4 border-b border-gray-100 flex items-center gap-3"">
+                    <div class=""step-badge"">3</div>
+                    <h3 class=""font-bold text-lg text-gray-800"">خوێندن بۆ تاقیکردنەوە</h3>
+                </div>
+                <div class=""p-4 space-y-3"">
+                    <p class=""text-gray-600 text-sm"">ئەمە زۆر گرنگە بۆ تێگەیشتن لە یاساکانی هاتووچۆ:</p>
+                    <ul class=""list-disc list-inside text-sm text-gray-600 space-y-1"">
+                        <li>کتێبی ڕێبەری شۆفێری (<span dir=""ltr"">Highway Code</span>) پەیدا بکە.</li>
+                        <li>یاساکانی سەر شەقام و هێماکان فێر ببە.</li>
+                        <li>تاقیکردنەوەی ئەزموونی ئۆنلاین بکە بۆ ئەوەی خۆت ئامادە بکەیت.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class=""bg-white rounded-xl overflow-hidden shadow-md border border-gray-200"">
+                <div class=""p-4 border-b border-gray-100 flex items-center gap-3"">
+                    <div class=""step-badge"">4</div>
+                    <h3 class=""font-bold text-lg text-gray-800"">ئەنجامدانی تاقیکردنەوەی تیۆری</h3>
+                </div>
+                <div class=""p-4 space-y-3"">
+                    <p class=""text-gray-600 text-sm"">کاتێک ئامادە بوویت، کاتێک دیاری بکە لە سەنتەری تاقیکردنەوە.</p>
+                    <div class=""bg-yellow-50 border-r-4 border-yellow-400 p-3 rounded text-xs text-yellow-800"">
+                        <strong>لە بیرت نەچێت:</strong> ناسنامەکەت لەگەڵ خۆت ببە بۆ تاقیکردنەوەکە.
+                    </div>
+                    <p class=""text-gray-600 text-sm"">دوای دەرچوون، بڕوانامەی دەرچوونت وەردەگریت و مۆڵەتە کاتییەکەت بە پۆست بۆ دێت.</p>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class=""relative py-4"">
+                <div class=""absolute inset-0 flex items-center"">
+                    <div class=""w-full border-t border-gray-300""></div>
+                </div>
+                <div class=""relative flex justify-center"">
+                    <span class=""bg-f3f4f6 px-4 text-sm text-gray-500 font-medium"">قۆناغی ٣: فێربوونی شۆفێری</span>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class=""bg-white rounded-xl overflow-hidden shadow-md border border-gray-200"">
+                <div class=""p-4 border-b border-gray-100 flex items-center gap-3"">
+                    <div class=""step-badge"">5</div>
+                    <h3 class=""font-bold text-lg text-gray-800"">مەشقکردن</h3>
+                </div>
+                <div class=""p-4 space-y-3"">
+                    <p class=""text-gray-600 text-sm"">کاتێک مۆڵەتی کاتی (<span dir=""ltr"">Provisional</span>)ت وەرگرت، دەتوانیت دەست بکەیت بە شۆفێری.</p>
+                    <p class=""text-gray-600 text-sm""><strong>مەرج:</strong> دەبێت هەمیشە کەسێکی پێگەیشتوو (سەروو ٢١ ساڵ) کە مۆڵەتی تەواوی هەبێت لە تەنیشتت دابنیشێت.</p>
+                    <div class=""step-image-container bg-indigo-50 border-indigo-100"">
+                        <i class=""ph ph-steering-wheel text-4xl text-indigo-300""></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class=""bg-white rounded-xl overflow-hidden shadow-md border border-gray-200"">
+                <div class=""p-4 border-b border-gray-100 flex items-center gap-3"">
+                    <div class=""step-badge"">6</div>
+                    <h3 class=""font-bold text-lg text-gray-800"">تاقیکردنەوەی پراکتیکی (Driving Test)</h3>
+                </div>
+                <div class=""p-4 space-y-3"">
+                    <p class=""text-gray-600 text-sm"">کاتێک هەستت کرد ئامادەیت، کاتی تاقیکردنەوەی کۆتایی دیاری بکە. پشکنەر هەڵسەنگاندن بۆ تواناکانت دەکات.</p>
+                    <p class=""text-gray-600 text-sm font-semibold"">لە ڕۆژی تاقیکردنەوەکەدا ئەمانە ببە:</p>
+                    <ul class=""list-disc list-inside text-sm text-gray-600 space-y-1"">
+                        <li>مۆڵەتی کاتی (Provisional).</li>
+                        <li>بەڵگەی دەرچوون لە تاقیکردنەوەی تیۆری.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 7 (Final) -->
+            <div class=""bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl overflow-hidden shadow-md border border-green-200"">...",,,,,,0,2025-11-28 12:29:51.204578+00,2025-11-28 12:29:51.204578+00
+adfae006-ad60-44b9-a59d-5d8842f8d43e,healthcare,ku,دۆزینەوەی دکتۆر,find-a-doctor,"<div>
+        <h2>دۆزینەوەی دکتۆر</h2>
+        <p>دۆزینەوەی GP یان دکتۆری خێزانی یارمەتیت دەدات لە بەکارهێنانی خزمەتگوزاریە تەندروستیەکان.</p>
+        <h3>چۆن دۆزی بدەیتەوە:</h3>
+        <ul>
+            <li>سەردانی ماڵپەڕی NHS بکە</li>
+            <li>ناونیشانی خۆت بنووسە</li>
+            <li>لیستی GP ەکان ببینە</li>
+            <li>GP یەکی هەڵبژێرە کە نزیکت بێت</li>
+        </ul>
+    </div>",دۆزینەوەی دکتۆری نزیک,https://www.nhs.uk/service-search/find-a-gp,,,NHS,2,2025-11-13 10:54:28.324766+00,2025-11-13 10:54:28.324766+00
+b14f8132-beec-463c-8fd6-8ddda401f04c,housing,ku,Universal Credit,universal-credit,"<div>
+        <h2>Universal Credit</h2>
+        <p>Universal Credit یارمەتی داراییەکی گشتگیرە کە لەگەڵ یارمەتی کرێ دەگرێتەوە.</p>
+        <h3>شامەڵدەکات:</h3>
+        <ul>
+            <li>یارمەتی کرێ</li>
+            <li>یارمەتی بێکاری</li>
+            <li>یارمەتی منداڵ</li>
+        </ul>
+    </div>",یارمەتی کرێ لە ژێر Universal Credit,https://www.gov.uk/universal-credit,,,UK Government,3,2025-11-13 10:54:28.324766+00,2025-11-13 10:54:28.324766+00
+b84f6bf7-54ce-4970-9f21-8d75abddae96,driving,ku,تۆمارکردنی تاقیکردنەوەی تیۆری,Book Driving Test,"تۆمارکردنی تاقیکردنەوە<!DOCTYPE html>
+<html lang=""ku"" dir=""rtl"">
+<head>
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <title>Driving Theory Test Guide (Kurdish)</title>
+    <!-- Load Tailwind CSS with Typography -->
+    <script src=""https://cdn.tailwindcss.com?plugins=typography""></script>
+    <!-- Load Phosphor Icons -->
+    <script src=""https://unpkg.com/@phosphor-icons/web""></script>
+    
+    <style>
+        /* Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        
+        /* Kurdish Font */
+        html[dir=""rtl""] body {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+        }
+
+        /* Step Number Badge */
+        .step-badge {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        /* Image Container styling */
+        .step-image-container {
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            margin-top: 1rem;
+            background-color: white;
+        }
+        .step-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body class=""p-4 md:p-8 pb-24"">
+
+    <div class=""max-w-md mx-auto bg-gray-50 rounded-2xl shadow-xl overflow-hidden relative min-h-screen"">
+        
+        <!-- Header -->
+        <header class=""sticky top-0 z-40 bg-white text-gray-800 p-4 shadow-sm flex items-center border-b border-gray-200"">
+            <button class=""absolute left-4 rtl:left-auto rtl:right-4"">
+                <i class=""ph ph-arrow-right text-2xl text-gray-600 rtl:rotate-180""></i>
+            </button>
+            <h1 class=""text-lg font-bold text-center w-full"">ڕێبەری تاقیکردنەوەی تیۆری</h1>
+        </header>
+
+        <main class=""p-5 space-y-6 ltr:text-left rtl:text-right"">
+
+            <!-- Intro Card -->
+            <div class=""bg-white rounded-xl p-5 shadow-sm border border-indigo-100"">
+                <h2 class=""text-2xl font-bold text-gray-900 mb-2"">
+                    تۆمارکردنی تاقیکردنەوەی تیۆری
+                </h2>
+                <p class=""text-sm text-gray-500 mb-4"">
+                    نوێکراوەتەوە
+                </p>
+                <div class=""prose prose-indigo max-w-none text-gray-700 text-sm"">
+                    <p>ئەمە ڕێبەرێکی وێنەییە بۆ چۆنیەتی تۆمارکردنی تاقیکردنەوەی تیۆری شۆفێری لە ماڵپەڕی فەرمی حکومەت.</p>
+                </div>
+            </div>
+
+            <!-- Quick Facts Card -->
+            <div class=""bg-white rounded-xl p-5 shadow-sm border border-indigo-100"">
+                <h3 class=""text-xl font-bold text-gray-800 mb-4"">مەرجەکان و تێچوو</h3>
+                <div class=""space-y-4"">
+                    <div class=""flex items-start p-3 bg-gray-50 rounded-lg"">
+                        <div class=""flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-10 h-10 flex items-center justify-center"">
+                            <i class=""ph ph-money text-xl""></i>
+                        </div>
+                        <div class=""ml-4 rtl:ml-0 rtl:mr-4"">
+                            <p class=""font-semibold text-gray-700"">نرخ؟</p>
+                            <div class=""text-sm text-gray-600"">
+                                <strong>٢٣ پاوەند</strong> بۆ ئۆتۆمبێل و ماتۆڕسکیل.
+                            </div>
+                        </div>
+                    </div>
+                    <div class=""flex items-start p-3 bg-gray-50 rounded-lg"">
+                        <div class=""flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-10 h-10 flex items-center justify-center"">
+                            <i class=""ph ph-house-line text-xl""></i>
+                        </div>
+                        <div class=""ml-4 rtl:ml-0 rtl:mr-4"">
+                            <p class=""font-semibold text-gray-700"">نیشتەجێبوون؟</p>
+                            <div class=""text-sm text-gray-600"">لانی کەم ١٨٥ ڕۆژ لە ١٢ مانگی ڕابردوودا لە بەریتانیا ژیابیت.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Requirements Checklist -->
+            <div class=""bg-indigo-50 rounded-xl p-5 border border-indigo-100 shadow-sm"">
+                <h3 class=""font-bold text-indigo-900 mb-3 flex items-center gap-2"">
+                    <i class=""ph ph-check-circle text-xl""></i>
+                    پێش دەستپێکردن ئامادەی بکە:
+                </h3>
+                <ul class=""space-y-2"">
+                    <li class=""flex items-start gap-2 text-indigo-800 text-sm"">
+                        <span class=""mt-1.5 w-1.5 h-1.5 bg-indigo-500 rounded-full flex-shrink-0""></span>
+                        ژمارەی مۆڵەتی شۆفێری کاتی (Provisional)
+                    </li>
+                    <li class=""flex items-start gap-2 text-indigo-800 text-sm"">
+                        <span class=""mt-1.5 w-1.5 h-1.5 bg-indigo-500 rounded-full flex-shrink-0""></span>
+                        ناونیشانی ئیمەیڵ
+                    </li>
+                    <li class=""flex items-start gap-2 text-indigo-800 text-sm"">
+                        <span class=""mt-1.5 w-1.5 h-1.5 bg-indigo-500 rounded-full flex-shrink-0""></span>
+                        کارتی بانک (بۆ تێچووی ٢٣ پاوەند)
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Divider -->
+            <div class=""relative py-4"">
+                <div class=""absolute inset-0 flex items-center"">
+                    <div class=""w-full border-t border-gray-300""></div>
+                </div>
+                <div class=""relative flex justify-center"">
+                    <span class=""bg-f3f4f6 px-4 text-sm text-gray-500 font-medium"">هەنگاو بە هەنگاو (بە وێنەوە)</span>
+                </div>
+            </div>
+
+            <!-- Step 1 -->
+            <div class=""bg-white rounded-xl overflow-hidden shadow-md border border-gray-200"">
+                <div class=""p-4 border-b border-gray-100 flex items-center gap-3"">
+                    <div class=""step-badge"">1</div>
+                    <h3 class=""font-bold text-lg text-gray-800"">دەستپێکردن</h3>
+                </div>
+                <div class=""p-4 space-y-3"">
+                    <p class=""text-gray-600 text-sm"">سەردانی <a href=""https://www.gov.uk/book-theory-test"" class=""text-indigo-600 underline"">gov.uk/book-theory-test</a> بکە. دەبێت ماڵپەڕێک ببینیت وەک ئەم وێنەیە. کلیک لەسەر دوگمە سەوزەکە <span dir=""ltr"">""Start now""</span> بکە.</p>
+                    
+                    <div class=""step-image-container"">
+                        <img src=""https://speedytests.co.uk/img/book-driving-test.png"" alt=""Start now button on GOV.UK"">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class=""bg-white rounded-xl overflow-hidden shadow-md border border-gray-200"">
+                <div class=""p-4 border-b border-gray-100 flex items-center gap-3"">
+                    <div class=""step-badge"">2</div>
+                    <h3 class=""font-bold text-lg text-gray-800"">هەڵبژاردنی جۆر</h3>
+                </div>
+                <div class=""p-4 space-y-3"">
+                    <p class=""text-gray-600 text-sm"">ئێستا دەبێت جۆری تاقیکردنەوەکە هەڵبژێریت. بۆ مۆڵەتی ئاسایی، هەڵبژاردنی <span dir=""ltr"">""Car""</span> بکە.</p>
+                    
+                    <div class=""step-image-container"">
+                        <img src=""https://speedytests.co.uk/img/choosing-which-driving-test.png"" alt=""Choose vehicle type"">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class=""bg-white rounded-xl overflow-hidden shadow-md border border-gray-200"">
+                <div class=""p-4 border-b border-gray-100 flex items-center gap-3"">
+                    <div class=""step-badge"">3</div>
+                    <h3 class=""font-bold text-lg text-gray-800"">زانیاری مۆڵەت</h3>
+                </div>
+                <div class=""p-4 space-y-3"">
+                    <p class=""text-gray-600 text-sm"">لەم قۆناغەدا، ژمارەی مۆڵەتە کاتییەکەت (<span dir=""ltr"">Provisional License</span>) بنووسە. دەبێت ١٦ پیت و ژمارە بێت.</p>
+                    <div class=""bg-yellow-50 border-r-4 border-yellow-400 p-3 rounded text-xs text-yellow-800"">
+                        <strong>تێبینی:</strong> تەنها ١٦ ژمارەی یەکەم بنووسە، دوو ژمارەی کۆتایی مەنووسە.
+                    </div>
+                    
+                    <div class=""step-image-container"">
+                        <img src=""https://speedytests.co.uk/img/details-for-booking-driving-test.png"" alt=""Enter license details"">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class=""bg-white rounded-xl overflow-hidden shadow-md border border-gray-200"">
+                <div class=""p-4 border-b border-gray-100 flex items-center gap-3"">
+                    <div class=""step-badge"">4</div>
+                    <h3 class=""font-bold text-lg text-gray-800"">هەڵبژاردنی بەروار</h3>
+                </div>
+                <div class=""p-4 space-y-3"">
+                    <p class=""text-gray-600 text-sm"">لێرەدا دەتوانیت بەروارێک هەڵبژێریت کە دەتەوێت تاقیکردنەوەکەی تێدا ئەنجام بدەیت.</p>
+                    
+                    <div class=""step-image-container"">
+                        <img src=""https://speedytests.co.uk/img/choosing-the-date.png"" alt=""Choose date"">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class=""bg-white rounded-xl overflow-hidden shadow-md border border-gray-200"">
+                <div class=""p-4 border-b border-gray-100 flex items-center gap-3"">
+                    <div class=""step-badge"">5</div>
+ ...",,https://www.gov.uk/book-driving-test,,,https://www.gov.uk,0,2025-11-26 00:26:13.177967+00,2025-11-28 20:27:08.302448+00
+bd56a547-ec7f-4bb1-a053-fcce3f1f92d6,healthcare,ar,كيفية التسجيل في GP,how-to-register-with-gp,"<div>
+        <h2>كيفية التسجيل في GP</h2>
+        <p>التسجيل لدى طبيب العائلة (GP) هو أحد أهم الخطوات لاستخدام خدمات NHS الصحية.</p>
+        <h3>الخطوات:</h3>
+        <ol>
+            <li>العثور على GP قريب</li>
+            <li>ملء نموذج التسجيل</li>
+            <li>إرسال المستندات المطلوبة</li>
+            <li>انتظار التأكيد</li>
+        </ol>
+        <p><strong>ملاحظة:</strong> يمكنك العثور على GP من موقع NHS.</p>
+    </div>",معلومات حول كيفية التسجيل لدى طبيب العائلة,https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/,,,NHS,1,2025-11-13 10:54:28.324766+00,2025-11-13 10:54:28.324766+00
+cf9b3bd6-62a1-46ee-8f4c-72044a395421,housing,ar,Universal Credit,universal-credit,"<div>
+        <h2>Universal Credit</h2>
+        <p>Universal Credit هي مساعدة مالية شاملة تشمل مساعدة الإيجار.</p>
+        <h3>يشمل:</h3>
+        <ul>
+            <li>مساعدة الإيجار</li>
+            <li>مساعدة البطالة</li>
+            <li>مساعدة الطفل</li>
+        </ul>
+    </div>",مساعدة الإيجار تحت Universal Credit,https://www.gov.uk/universal-credit,,,UK Government,3,2025-11-13 10:54:28.324766+00,2025-11-13 10:54:28.324766+00
+df64508e-2800-4ce7-b03f-0dc8b86eef81,driving,ku," داواکاری بۆ یەکەم مۆڵەتی شۆفێری کاتی",Provisional Licence,"<!DOCTYPE html>
+<html lang=""ku"" dir=""rtl"">
+<head>
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <title>Driving License Application Guide (Kurdish)</title>
+    <!-- Load Tailwind CSS with Typography -->
+    <script src=""https://cdn.tailwindcss.com?plugins=typography""></script>
+    <!-- Load Phosphor Icons -->
+    <script src=""https://unpkg.com/@phosphor-icons/web""></script>
+    
+    <style>
+        /* Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        
+        /* Kurdish Font */
+        html[dir=""rtl""] body {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+        }
+
+        /* Step Number Badge */
+        .step-badge {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        /* Image Container styling */
+        .step-image-container {
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            margin-top: 1rem;
+            background-color: white;
+        }
+        .step-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body class=""p-4 md:p-8 pb-24"">
+
+    <div class=""max-w-md mx-auto bg-gray-50 rounded-2xl shadow-xl overflow-hidden relative min-h-screen"">
+        
+        <!-- Header -->
+        <header class=""sticky top-0 z-40 bg-white text-gray-800 p-4 shadow-sm flex items-center border-b border-gray-200"">
+            <button class=""absolute left-4 rtl:left-auto rtl:right-4"">
+                <i class=""ph ph-arrow-right text-2xl text-gray-600 rtl:rotate-180""></i>
+            </button>
+            <h1 class=""text-lg font-bold text-center w-full"">ڕێبەری پڕکردنەوەی فۆڕم</h1>
+        </header>
+
+        <main class=""p-5 space-y-6 ltr:text-left rtl:text-right"">
+
+            <!-- Intro Card (From Preview File) -->
+            <div class=""bg-white rounded-xl p-5 shadow-sm border border-indigo-100"">
+                <h2 class=""text-2xl font-bold text-gray-900 mb-2"">
+                    داواکاری بۆ یەکەم مۆڵەتی شۆفێری کاتی
+                </h2>
+                <p class=""text-sm text-gray-500 mb-4"">
+                    نوێکراوەتەوە
+                </p>
+                <div class=""prose prose-indigo max-w-none text-gray-700 text-sm"">
+                    <p>یەکەم مۆڵەتی شۆفێری کاتی خۆت بۆ ئۆتۆمبێل، ماتۆڕسکیل، یان ئۆتۆمبێلی تر لە <span dir=""ltr"">DVLA</span> بە شێوەی ئۆنلاین وەربگرە.</p>
+                </div>
+            </div>
+
+            <!-- Quick Facts Card (From Preview File) -->
+            <div class=""bg-white rounded-xl p-5 shadow-sm border border-indigo-100"">
+                <h3 class=""text-xl font-bold text-gray-800 mb-4"">مەرجەکان </h3>
+                <div class=""space-y-4"">
+                    <div class=""flex items-start p-3 bg-gray-50 rounded-lg"">
+                        <div class=""flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-10 h-10 flex items-center justify-center"">
+                            <i class=""ph ph-calendar text-xl""></i>
+                        </div>
+                        <div class=""ml-4 rtl:ml-0 rtl:mr-4"">
+                            <p class=""font-semibold text-gray-700"">تەمەن؟</p>
+                            <div class=""text-sm text-gray-600"">لانی کەم ١٥ ساڵ و ٩ مانگ بیت.</div>
+                        </div>
+                    </div>
+                    <div class=""flex items-start p-3 bg-gray-50 rounded-lg"">
+                        <div class=""flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-10 h-10 flex items-center justify-center"">
+                            <i class=""ph ph-house-line text-xl""></i>
+                        </div>
+                        <div class=""ml-4 rtl:ml-0 rtl:mr-4"">
+                            <p class=""font-semibold text-gray-700"">نیشتەجێبوون؟</p>
+                            <div class=""text-sm text-gray-600"">لانی کەم ١٨٥ ڕۆژ مۆڵەتی مانەوەت لە بەریتانیا هەبێت.</div>
+                        </div>
+                    </div>
+                    <div class=""flex items-start p-3 bg-gray-50 rounded-lg"">
+                        <div class=""flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full w-10 h-10 flex items-center justify-center"">
+                            <i class=""ph ph-money text-xl""></i>
+                        </div>
+                        <div class=""ml-4 rtl:ml-0 rtl:mr-4"">
+                            <p class=""font-semibold text-gray-700"">نرخ؟</p>
+                            <div class=""text-sm text-gray-600"">٣٤ پاوەند (ئەگەر ئۆنلاین داوا بکەیت).</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Requirements Checklist -->
+            <div class=""bg-indigo-50 rounded-xl p-5 border border-indigo-100 shadow-sm"">
+                <h3 class=""font-bold text-indigo-900 mb-3 flex items-center gap-2"">
+                    <i class=""ph ph-check-circle text-xl""></i>
+                    پێش دەستپێکردن ئامادەی بکە:
+                </h3>
+                <ul class=""space-y-2"">
+                    <li class=""flex items-start gap-2 text-indigo-800 text-sm"">
+                        <span class=""mt-1.5 w-1.5 h-1.5 bg-indigo-500 rounded-full flex-shrink-0""></span>
+                        پاسپۆرتی بەریتانی (یان ناسنامەی تر)
+                    </li>
+                    <li class=""flex items-start gap-2 text-indigo-800 text-sm"">
+                        <span class=""mt-1.5 w-1.5 h-1.5 bg-indigo-500 rounded-full flex-shrink-0""></span>
+                        ناونیشانی ٣ ساڵی ڕابردووت
+                    </li>
+                    <li class=""flex items-start gap-2 text-indigo-800 text-sm"">
+                        <span class=""mt-1.5 w-1.5 h-1.5 bg-indigo-500 rounded-full flex-shrink-0""></span>
+                        ژمارەی بیمەی نیشتمانی (NI Number)
+                    </li>
+                    <li class=""flex items-start gap-2 text-indigo-800 text-sm"">
+                        <span class=""mt-1.5 w-1.5 h-1.5 bg-indigo-500 rounded-full flex-shrink-0""></span>
+                        کارتی بانک (بۆ تێچووی ٣٤ پاوەند)
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Divider -->
+            <div class=""relative py-4"">
+                <div class=""absolute inset-0 flex items-center"">
+                    <div class=""w-full border-t border-gray-300""></div>
+                </div>
+                <div class=""relative flex justify-center"">
+                    <span class=""bg-f3f4f6 px-4 text-sm text-gray-500 font-medium"">هەنگاو بە هەنگاو</span>
+                </div>
+            </div>
+
+            <!-- Step 1 -->
+            <div class=""bg-white rounded-xl overflow-hidden shadow-md border border-gray-200"">
+                <div class=""p-4 border-b border-gray-100 flex items-center gap-3"">
+                    <div class=""step-badge"">1</div>
+                    <h3 class=""font-bold text-lg text-gray-800"">دەستپێکردن</h3>
+                </div>
+                <div class=""p-4 space-y-3"">
+                    <p class=""text-gray-600 text-sm"">سەردانی بەشی <span dir=""ltr"">Driving Licences</span> بکە لە ماڵپەڕی حکومەت. کلیک لەسەر <span dir=""ltr"">""Apply for your first driving licence""</span> بکە.</p>
+                    <p class=""text-gray-600 text-sm"">پاشان کلیک لەسەر دوگمەی سەوز <span dir=""ltr"">""Start now""</span> بکە.</p>
+                    
+                    <div class=""step-image-container"">
+                        <img src=""https://www.digitalunite.com/sites/default/files/images/Drivinglicence1.png"" alt=""Start now button on GOV.UK"">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class=""bg-white rounded-xl overflow-hidden shadow-md border border-gray-200"">
+                <div class=""p-4 border-b border-gray-100 flex items-center gap-3"">
+                    <div class=""step-badge"">2</div>
+                    <h3 class=""font-bold text-lg text-gray-800"">تۆمارکردن (Register)</h3>
+                </div>
+                <div class=""p-4 space-y-3"">
+                    <p class=""text-gray-600 text-sm"">تۆ دەوازرێیتەوە بۆ ماڵپەڕی <span dir=""ltr"">DVLA</span>. بۆ دەستپێکردنی داواکارییەکەت، کلیک لەسەر <span dir=""ltr"">""Register""</span> بکە.</p>
+                    <p class=""text-gray-600 text-sm"">پاشان مەرجەکان بخوێنەوە و کلیک لەسەر <span dir=""ltr"">""Next""</span> بکە.</p>
+                    
+                    <div class=""step-image-container"">
+                        <img src=""https://www.digitalunite.com/sites/default/files/images/Drivinglicence2.png"" alt=""Registration button"">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class=""bg-white rounded-xl overflow-hidden shadow-md border border-gray-200"">
+                <div class=""p-4 border-b border-gray-100 flex items-center gap-3"">
+                    <div class=""step-badge"">3</div>
+                    <h3 class=""font-bold text-lg text-gray-800"">ناونیشان و زانیاری کەسی</h3>
+                </div>
+                <div class=""p-4 space-y-3"">
+                    <p class=""text-gray-600 text-sm"">زانیارییەکانت پڕ بکەرەوە (ناو، ڕەگەز، ڕۆژی لەدایکبوون). کاتێک تەواو بوویت، کلیک لەسەر <span dir=""ltr"">""Next""</span> بکە.</p>
+                    
+                    <div class=""step-image-container"">
+                        <img src=""https://www.digitalunite.com/sites/default/files/images/Drivinglicence3.png"" alt=""Personal details form"">
+                    </div>
+
+                    <p class=""text-gray-600 text-sm mt-4"">بۆ ناونیشان، ژمارەی خانوو و کۆدی پۆستە (<span dir=""ltr"">Postcode</span>) بنووسە. هەروەها پرسیارت لێدەکەن ""چەند ساڵە لەم ناونیشانە دەژیت؟"".</p>
+                    ...",,,,,UK Government,0,2025-11-25 23:56:13.034733+00,2025-11-28 20:29:24.571173+00

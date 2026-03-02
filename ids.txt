@@ -1,0 +1,4 @@
+cient id : 978645204436-6ciafq1vlpoqk0vomi2jmnittggv5meg.apps.googleusercontent.com
+
+
+client secret:  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
