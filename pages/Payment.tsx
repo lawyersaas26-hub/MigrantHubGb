@@ -72,7 +72,7 @@ const Payment: React.FC = () => {
 
     useEffect(() => {
         checkUser();
-        
+
         // Also listen for auth changes to update user
         const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
             if (session?.user) {
@@ -128,7 +128,7 @@ const Payment: React.FC = () => {
                 // Wait for CdvPurchase to be available on window
                 let retries = 0;
                 let Store: any = null;
-                
+
                 // Wait for window.CdvPurchase to be available
                 while (retries < 20) {
                     if (typeof window !== 'undefined' && (window as any).CdvPurchase?.store) {
@@ -160,9 +160,10 @@ const Payment: React.FC = () => {
                 // Ensure store is initialized
                 if (!Store.isReady && Store.initialize && typeof Store.initialize === 'function') {
                     try {
-                        await Store.initialize([CdvPurchase.Platform.GOOGLE_PLAY]);
+                        const platform = Capacitor.getPlatform() === 'ios' ? CdvPurchase.Platform.APPLE_APPSTORE : CdvPurchase.Platform.GOOGLE_PLAY;
+                        await Store.initialize([platform]);
                     } catch (err) {
-                        console.error('Error initializing store:', err);
+                        console.error('Store initializing error:', err);
                         return;
                     }
                 }
@@ -189,11 +190,11 @@ const Payment: React.FC = () => {
                     const handleApprovedTransaction = async (transaction: any) => {
                         console.log('Transaction approved:', transaction);
                         // Transactions have a products array, get the first product ID
-                        const productId = transaction.products && transaction.products.length > 0 
-                            ? transaction.products[0].id 
+                        const productId = transaction.products && transaction.products.length > 0
+                            ? transaction.products[0].id
                             : null;
                         const plans = ['light_monthly', 'gold_monthly', 'business_monthly'];
-                        
+
                         // Only process if it's one of our subscription plans
                         if (productId && plans.includes(productId)) {
                             console.log('Processing approved transaction for:', productId);
@@ -229,16 +230,16 @@ const Payment: React.FC = () => {
                         if (receipt && receipt.transactions && receipt.transactions.length > 0) {
                             // Use for...of loop to properly handle async/await
                             for (const transaction of receipt.transactions) {
-                                const productId = transaction.products && transaction.products.length > 0 
-                                    ? transaction.products[0].id 
+                                const productId = transaction.products && transaction.products.length > 0
+                                    ? transaction.products[0].id
                                     : null;
                                 const plans = ['light_monthly', 'gold_monthly', 'business_monthly'];
-                                
+
                                 const txState = transaction.state || (transaction as any).transactionState;
-                                const isApproved = txState === 'approved' || 
-                                                   txState === 'APPROVED' || 
-                                                   txState === CdvPurchase.TransactionState.APPROVED;
-                                
+                                const isApproved = txState === 'approved' ||
+                                    txState === 'APPROVED' ||
+                                    txState === CdvPurchase.TransactionState.APPROVED;
+
                                 if (productId && plans.includes(productId) && isApproved) {
                                     console.log('Found approved transaction in receipt update:', productId, 'State:', txState);
                                     // Save to database FIRST, then acknowledge
@@ -258,13 +259,13 @@ const Payment: React.FC = () => {
                             }
                         }
                     };
-                    
+
                     // Check if when method exists
                     if (!Store.when) {
                         console.error('Store.when does not exist. Store type:', typeof Store);
                         console.error('Store constructor:', Store.constructor?.name);
                         console.error('Available methods:', Object.getOwnPropertyNames(Store).filter(name => typeof Store[name] === 'function'));
-                        
+
                         // Try alternative: check if store has a different structure
                         // Sometimes the store might be accessed differently
                         const storeAlt = (window as any).CdvPurchase?.Store ? new (window as any).CdvPurchase.Store() : null;
@@ -273,23 +274,23 @@ const Payment: React.FC = () => {
                             storeAlt.when().approved(handleApprovedTransaction);
                             return;
                         }
-                        
+
                         // Last resort: try to access approvedCallbacks directly if available
                         if ((Store as any).approvedCallbacks && typeof (Store as any).approvedCallbacks.push === 'function') {
                             console.log('Using approvedCallbacks directly');
                             (Store as any).approvedCallbacks.push(handleApprovedTransaction);
                             return;
                         }
-                        
+
                         console.error('Could not set up approved listener - when() method not available');
                         return;
                     }
-                    
+
                     if (typeof Store.when !== 'function') {
                         console.error('Store.when is not a function:', typeof Store.when, Store.when);
                         return;
                     }
-                    
+
                     // Call when() and set up the approved callback and receipt updated callback
                     try {
                         const whenResult = Store.when();
@@ -297,7 +298,7 @@ const Payment: React.FC = () => {
                             console.error('Store.when() returned null/undefined');
                             return;
                         }
-                        
+
                         // Set up approved listener
                         if (typeof whenResult.approved === 'function') {
                             whenResult.approved(handleApprovedTransaction);
@@ -338,7 +339,7 @@ const Payment: React.FC = () => {
             const initListeners = async () => {
                 // Wait a bit for Capacitor to initialize
                 await new Promise(resolve => setTimeout(resolve, 500));
-                
+
                 // Check if we're on a native platform and plugin is available
                 if (Capacitor.isNativePlatform()) {
                     // Try to access the store directly
@@ -353,7 +354,7 @@ const Payment: React.FC = () => {
                     checkStore();
                 }
             };
-            
+
             initListeners();
         }
     }, []);
@@ -383,7 +384,8 @@ const Payment: React.FC = () => {
                 // Ensure store is initialized
                 if (!Store.isReady) {
                     try {
-                        await Store.initialize([CdvPurchase.Platform.GOOGLE_PLAY]);
+                        const platform = Capacitor.getPlatform() === 'ios' ? CdvPurchase.Platform.APPLE_APPSTORE : CdvPurchase.Platform.GOOGLE_PLAY;
+                        await Store.initialize([platform]);
                     } catch (initErr: any) {
                         reject(new Error(`Failed to initialize store: ${initErr.message}`));
                         return;
@@ -396,7 +398,7 @@ const Payment: React.FC = () => {
                         readyResolve();
                         return;
                     }
-                    
+
                     Store.ready(() => {
                         readyResolve();
                     });
@@ -444,7 +446,7 @@ const Payment: React.FC = () => {
                     const checkPurchase = async (attempt: number = 1) => {
                         try {
                             console.log(`Checking purchase (attempt ${attempt})...`);
-                            
+
                             // Ensure user is loaded
                             let currentUser = user;
                             if (!currentUser || !currentUser.id) {
@@ -464,49 +466,50 @@ const Payment: React.FC = () => {
                             // Refresh store
                             await Store.update();
                             console.log('Store updated, checking for owned products...');
-                            
+
                             // Wait a bit for receipts to load
                             await new Promise(resolve => setTimeout(resolve, 500));
-                            
+
                             // Check if the product is now owned
                             const purchasedProduct = Store.get(productId);
-                            console.log('Product check:', { 
-                                productId, 
-                                found: !!purchasedProduct, 
+                            console.log('Product check:', {
+                                productId,
+                                found: !!purchasedProduct,
                                 owned: purchasedProduct?.owned,
-                                canPurchase: purchasedProduct?.canPurchase 
+                                canPurchase: purchasedProduct?.canPurchase
                             });
-                            
+
                             if (purchasedProduct && purchasedProduct.owned) {
                                 console.log('Product is now owned, saving to database...');
                                 // Get the transaction from the receipts
                                 const receipts = Store.localReceipts || [];
                                 console.log('Local receipts:', receipts.length);
-                                
+
                                 for (const receipt of receipts) {
-                                    if (receipt.platform === CdvPurchase.Platform.GOOGLE_PLAY) {
+                                    const platform = Capacitor.getPlatform() === 'ios' ? CdvPurchase.Platform.APPLE_APPSTORE : CdvPurchase.Platform.GOOGLE_PLAY;
+                                    if (receipt.platform === platform) {
                                         const transactions = receipt.transactions || [];
                                         console.log('Receipt transactions:', transactions.length);
-                                        
+
                                         for (const transaction of transactions) {
-                                            const txProductId = transaction.products && transaction.products.length > 0 
-                                                ? transaction.products[0].id 
+                                            const txProductId = transaction.products && transaction.products.length > 0
+                                                ? transaction.products[0].id
                                                 : null;
                                             const txState = transaction.state || (transaction as any).transactionState;
-                                            
-                                            console.log('Transaction check:', { 
-                                                txProductId, 
-                                                productId, 
+
+                                            console.log('Transaction check:', {
+                                                txProductId,
+                                                productId,
                                                 matches: txProductId === productId,
                                                 state: txState,
                                                 isApproved: txState === 'approved' || txState === 'APPROVED' || txState === CdvPurchase.TransactionState.APPROVED
                                             });
-                                            
-                                            if (txProductId === productId && 
-                                                (txState === 'approved' || 
-                                                 txState === 'APPROVED' || 
-                                                 txState === CdvPurchase.TransactionState.APPROVED ||
-                                                 txState === 'INITIATED')) {
+
+                                            if (txProductId === productId &&
+                                                (txState === 'approved' ||
+                                                    txState === 'APPROVED' ||
+                                                    txState === CdvPurchase.TransactionState.APPROVED ||
+                                                    txState === 'INITIATED')) {
                                                 console.log('Found matching transaction, saving...');
                                                 // Save to database FIRST, then acknowledge
                                                 try {
@@ -526,7 +529,7 @@ const Payment: React.FC = () => {
                                         }
                                     }
                                 }
-                                
+
                                 // If we didn't find a transaction but product is owned, save subscription directly
                                 if (attempt >= 2 && purchasedProduct.owned && currentUser && currentUser.id) {
                                     console.log('Product is owned but no transaction found, creating subscription record directly...');
@@ -543,7 +546,7 @@ const Payment: React.FC = () => {
                                     return;
                                 }
                             }
-                            
+
                             // Retry if not found yet
                             if (attempt < 5) {
                                 setTimeout(() => checkPurchase(attempt + 1), 2000);
@@ -558,7 +561,7 @@ const Payment: React.FC = () => {
                             }
                         }
                     };
-                    
+
                     // Start checking after 2 seconds
                     setTimeout(() => checkPurchase(1), 2000);
 
@@ -578,7 +581,7 @@ const Payment: React.FC = () => {
 
     const saveSubscriptionToDatabase = async (transaction: any) => {
         console.log('saveSubscriptionToDatabase called with transaction:', transaction);
-        
+
         // Ensure user is loaded
         let currentUser = user;
         if (!currentUser || !currentUser.id) {
@@ -586,14 +589,14 @@ const Payment: React.FC = () => {
             currentUser = await getCurrentUserProfile();
             // Wait a bit for user to be set
             await new Promise(resolve => setTimeout(resolve, 300));
-            
+
             if (!currentUser || !currentUser.id) {
                 console.error('User still not available after reload. Cannot save subscription.');
                 setError('User session expired. Please sign in again.');
                 return;
             }
         }
-        
+
         console.log('User confirmed:', currentUser.id);
 
         const expiresAt = new Date();
@@ -608,12 +611,12 @@ const Payment: React.FC = () => {
             transaction.orderId ||
             transaction.productId ||
             JSON.stringify(transaction);
-        
+
         // Get productId from transaction - it might be in products array or as a direct property
-        const productId = (transaction.products && transaction.products.length > 0 
-            ? transaction.products[0].id 
+        const productId = (transaction.products && transaction.products.length > 0
+            ? transaction.products[0].id
             : null) || (transaction as any).productId || currentPlan!.id;
-        
+
         console.log('Saving subscription:', { productId, receipt, userId: currentUser.id });
 
         try {
@@ -962,10 +965,10 @@ const Payment: React.FC = () => {
                 {Capacitor.isNativePlatform() && (
                     <p className="mt-4 text-xs text-slate-500 dark:text-slate-400 text-center">
                         {language === 'ku'
-                            ? 'پارەدان لە ڕێگەی Google Play دەکرێت'
+                            ? Capacitor.getPlatform() === 'ios' ? 'پارەدان لە ڕێگەی App Store دەکرێت' : 'پارەدان لە ڕێگەی Google Play دەکرێت'
                             : language === 'ar'
-                                ? 'سيتم الدفع عبر Google Play'
-                                : 'Payment will be processed through Google Play'
+                                ? Capacitor.getPlatform() === 'ios' ? 'سيتم الدفع عبر App Store' : 'سيتم الدفع عبر Google Play'
+                                : Capacitor.getPlatform() === 'ios' ? 'Payment will be processed through App Store' : 'Payment will be processed through Google Play'
                         }
                     </p>
                 )}
@@ -995,10 +998,10 @@ const Payment: React.FC = () => {
                 <div className="text-xs text-slate-500 dark:text-slate-400 text-center">
                     <p>
                         {language === 'ku'
-                            ? 'پارەدانەکان لە ڕێگەی Google Play Billing دەکرێن (بۆ ئەندرۆید)'
+                            ? Capacitor.getPlatform() === 'ios' ? 'پارەدانەکان لە ڕێگەی Apple In-App Purchase دەکرێن' : 'پارەدانەکان لە ڕێگەی Google Play Billing دەکرێن (بۆ ئەندرۆید)'
                             : language === 'ar'
-                                ? 'يتم الدفع عبر Google Play Billing (لـ Android)'
-                                : 'Payments are processed through Google Play Billing (for Android)'
+                                ? Capacitor.getPlatform() === 'ios' ? 'يتم الدفع عبر Apple In-App Purchase' : 'يتم الدفع عبر Google Play Billing (لـ Android)'
+                                : Capacitor.getPlatform() === 'ios' ? 'Payments are processed through Apple In-App Purchase' : 'Payments are processed through Google Play Billing (for Android)'
                         }
                     </p>
                 </div>
