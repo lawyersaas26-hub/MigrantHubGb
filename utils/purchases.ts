@@ -1,23 +1,27 @@
-
-import 'cordova-plugin-purchase';
 import { Capacitor } from '@capacitor/core';
+import 'cordova-plugin-purchase';
 
+export const getStorePlatform = () => {
+    return Capacitor.getPlatform() === 'ios'
+        ? CdvPurchase.Platform.APPLE_APPSTORE
+        : CdvPurchase.Platform.GOOGLE_PLAY;
+};
 
 export const PRODUCTS = {
     LIGHT_MONTHLY: {
         id: 'light_monthly',
         type: CdvPurchase.ProductType.PAID_SUBSCRIPTION,
-        platform: Capacitor.getPlatform() === 'ios' ? CdvPurchase.Platform.APPLE_APPSTORE : CdvPurchase.Platform.GOOGLE_PLAY,
+        platform: getStorePlatform(),
     },
     GOLD_MONTHLY: {
         id: 'gold_monthly',
         type: CdvPurchase.ProductType.PAID_SUBSCRIPTION,
-        platform: Capacitor.getPlatform() === 'ios' ? CdvPurchase.Platform.APPLE_APPSTORE : CdvPurchase.Platform.GOOGLE_PLAY,
+        platform: getStorePlatform(),
     },
     BUSINESS_MONTHLY: {
         id: 'business_monthly',
         type: CdvPurchase.ProductType.PAID_SUBSCRIPTION,
-        platform: Capacitor.getPlatform() === 'ios' ? CdvPurchase.Platform.APPLE_APPSTORE : CdvPurchase.Platform.GOOGLE_PLAY,
+        platform: getStorePlatform(),
     }
 };
 
@@ -50,11 +54,10 @@ export function initializePurchases() {
     store.verbosity = CdvPurchase.LogLevel.INFO;
 
     // Refresh to get product details (price, etc.) from Google/Apple
-    const platform = Capacitor.getPlatform() === 'ios' ? CdvPurchase.Platform.APPLE_APPSTORE : CdvPurchase.Platform.GOOGLE_PLAY;
     store.initialize([
-        platform
+        getStorePlatform()
     ]).then(() => {
-        console.log('Store initialized for platform:', platform);
+        console.log('Store initialized');
     }).catch(err => {
         console.error('Store initialization failed', err);
     });

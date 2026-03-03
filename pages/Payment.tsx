@@ -6,7 +6,7 @@ import { Capacitor } from '@capacitor/core';
 import { App } from '@capacitor/app';
 import { supabase } from '../lib/supabase';
 import { getCurrentUserProfile } from '../lib/userAuth';
-import { getStore, PRODUCTS } from '../utils/purchases';
+import { getStore, PRODUCTS, getStorePlatform } from '../utils/purchases';
 import 'cordova-plugin-purchase';
 
 const Payment: React.FC = () => {
@@ -160,10 +160,9 @@ const Payment: React.FC = () => {
                 // Ensure store is initialized
                 if (!Store.isReady && Store.initialize && typeof Store.initialize === 'function') {
                     try {
-                        const platform = Capacitor.getPlatform() === 'ios' ? CdvPurchase.Platform.APPLE_APPSTORE : CdvPurchase.Platform.GOOGLE_PLAY;
-                        await Store.initialize([platform]);
+                        await Store.initialize([getStorePlatform()]);
                     } catch (err) {
-                        console.error('Store initializing error:', err);
+                        console.error('Error initializing store:', err);
                         return;
                     }
                 }
@@ -384,8 +383,7 @@ const Payment: React.FC = () => {
                 // Ensure store is initialized
                 if (!Store.isReady) {
                     try {
-                        const platform = Capacitor.getPlatform() === 'ios' ? CdvPurchase.Platform.APPLE_APPSTORE : CdvPurchase.Platform.GOOGLE_PLAY;
-                        await Store.initialize([platform]);
+                        await Store.initialize([getStorePlatform()]);
                     } catch (initErr: any) {
                         reject(new Error(`Failed to initialize store: ${initErr.message}`));
                         return;
@@ -486,8 +484,7 @@ const Payment: React.FC = () => {
                                 console.log('Local receipts:', receipts.length);
 
                                 for (const receipt of receipts) {
-                                    const platform = Capacitor.getPlatform() === 'ios' ? CdvPurchase.Platform.APPLE_APPSTORE : CdvPurchase.Platform.GOOGLE_PLAY;
-                                    if (receipt.platform === platform) {
+                                    if (receipt.platform === getStorePlatform()) {
                                         const transactions = receipt.transactions || [];
                                         console.log('Receipt transactions:', transactions.length);
 
@@ -965,10 +962,10 @@ const Payment: React.FC = () => {
                 {Capacitor.isNativePlatform() && (
                     <p className="mt-4 text-xs text-slate-500 dark:text-slate-400 text-center">
                         {language === 'ku'
-                            ? Capacitor.getPlatform() === 'ios' ? 'پارەدان لە ڕێگەی App Store دەکرێت' : 'پارەدان لە ڕێگەی Google Play دەکرێت'
+                            ? 'پارەدان لە ڕێگەی Google Play دەکرێت'
                             : language === 'ar'
-                                ? Capacitor.getPlatform() === 'ios' ? 'سيتم الدفع عبر App Store' : 'سيتم الدفع عبر Google Play'
-                                : Capacitor.getPlatform() === 'ios' ? 'Payment will be processed through App Store' : 'Payment will be processed through Google Play'
+                                ? 'سيتم الدفع عبر Google Play'
+                                : 'Payment will be processed through Google Play'
                         }
                     </p>
                 )}
@@ -998,10 +995,10 @@ const Payment: React.FC = () => {
                 <div className="text-xs text-slate-500 dark:text-slate-400 text-center">
                     <p>
                         {language === 'ku'
-                            ? Capacitor.getPlatform() === 'ios' ? 'پارەدانەکان لە ڕێگەی Apple In-App Purchase دەکرێن' : 'پارەدانەکان لە ڕێگەی Google Play Billing دەکرێن (بۆ ئەندرۆید)'
+                            ? 'پارەدانەکان لە ڕێگەی Google Play Billing دەکرێن (بۆ ئەندرۆید)'
                             : language === 'ar'
-                                ? Capacitor.getPlatform() === 'ios' ? 'يتم الدفع عبر Apple In-App Purchase' : 'يتم الدفع عبر Google Play Billing (لـ Android)'
-                                : Capacitor.getPlatform() === 'ios' ? 'Payments are processed through Apple In-App Purchase' : 'Payments are processed through Google Play Billing (for Android)'
+                                ? 'يتم الدفع عبر Google Play Billing (لـ Android)'
+                                : 'Payments are processed through Google Play Billing (for Android)'
                         }
                     </p>
                 </div>
