@@ -108,17 +108,29 @@ const AppContent: React.FC = () => {
         return savedLang || 'ku';
     });
     const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+    const [networkError, setNetworkError] = useState(false);
+    const [retryCount, setRetryCount] = useState(0);
     const location = useLocation();
     const navigate = useNavigate();
 
-    // Check if user has visited before (has seen welcome screen)
     // Check authentication and control access
     useEffect(() => {
+        let timeoutId: string | number | NodeJS.Timeout;
+
         const checkAuth = async () => {
+            setIsCheckingAuth(true);
+            setNetworkError(false);
             const currentPath = location.pathname;
             const isWelcome = currentPath === '/welcome';
             const isAuthRoute = currentPath === '/login' || currentPath === '/register';
             const isAdmin = currentPath.startsWith('/admin');
+
+            // Timeout fallback: Apple reviewers test on strict IPv6 networks that often swallow requests over IPv4 or poor connections
+            timeoutId = setTimeout(() => {
+                console.warn('Network timeout reached during auth check. Assuming offline mode.');
+                setNetworkError(true);
+                setIsCheckingAuth(false);
+            }, 10000); // 10 seconds max
 
             try {
                 const { supabase } = await import('./lib/supabase');
@@ -133,33 +145,42 @@ const AppContent: React.FC = () => {
                     } catch (error) {
                         console.error('Error ensuring user profile exists:', error);
                     }
-                    
+
                     // Only redirect if they are on a guest-only page (welcome, login, register)
                     if (isWelcome || isAuthRoute) {
                         navigate('/', { replace: true });
                     }
                 } else {
                     // User is NOT logged in:
-                    // If not on a public page (welcome, login, register, admin), redirect to welcome
                     if (!isWelcome && !isAuthRoute && !isAdmin) {
                         navigate('/welcome', { replace: true });
                     }
                 }
             } catch (error) {
                 console.error('Error checking auth:', error);
-                // If Supabase connection fails, still allow access to welcome/auth pages
-                // If user is not on a public page, redirect to welcome
-                if (!isWelcome && !isAuthRoute && !isAdmin) {
-                    navigate('/welcome', { replace: true });
+
+                // If it's a network error from Supabase blocking the app completely, we should signal a network error
+                if (error instanceof Error && (error.message.includes('fetch') || error.message.includes('network'))) {
+                    setNetworkError(true);
+                } else {
+                    // Non-fatal error, redirect to welcome
+                    if (!isWelcome && !isAuthRoute && !isAdmin) {
+                        navigate('/welcome', { replace: true });
+                    }
                 }
             } finally {
-                // Ensure we stop loading after check, giving a small buffer for potential redirect to start
+                clearTimeout(timeoutId);
+                // Ensure we stop loading after check
                 setIsCheckingAuth(false);
             }
         };
 
         checkAuth();
-    }, [location.pathname, navigate]);
+
+        return () => {
+            if (timeoutId) clearTimeout(timeoutId);
+        };
+    }, [location.pathname, navigate, retryCount]);
 
     // Handle OAuth callback for web - process URL hash/query params
     useEffect(() => {
@@ -170,44 +191,44 @@ const AppContent: React.FC = () => {
             }
 
             const { supabase } = await import('./lib/supabase');
-            
+
             // Check if this is an OAuth callback (has tokens in URL hash or query params)
             const hash = window.location.hash;
             const searchParams = new URLSearchParams(window.location.search);
-            
+
             const hasHashToken = hash && (hash.includes('access_token') || hash.includes('error'));
             const hasQueryToken = searchParams.has('access_token') || searchParams.has('error');
 
             if (hasHashToken || hasQueryToken) {
                 console.log('OAuth callback detected, processing...', { hash: hash?.substring(0, 50), hasQueryToken });
-                
+
                 try {
                     // For hash-based OAuth (Supabase default), the tokens are in the hash
                     // Supabase will automatically parse them when we call getSession()
                     // But we should also try to extract and set them explicitly if needed
-                    
+
                     if (hash && hash.includes('access_token')) {
                         // Extract tokens from hash
                         const hashParams = new URLSearchParams(hash.substring(1));
                         const accessToken = hashParams.get('access_token');
                         const refreshToken = hashParams.get('refresh_token');
-                        
+
                         if (accessToken && refreshToken) {
                             console.log('Setting session from hash tokens...');
                             const { error: sessionError } = await supabase.auth.setSession({
                                 access_token: accessToken,
                                 refresh_token: refreshToken,
                             });
-                            
+
                             if (sessionError) {
                                 console.error('Error setting session from hash:', sessionError);
                             }
                         }
                     }
-                    
+
                     // Get the session (Supabase should have parsed it by now)
                     const { data: { session }, error } = await supabase.auth.getSession();
-                    
+
                     if (error) {
                         console.error('Error getting session after OAuth:', error);
                         // Check if there's an error in the hash/query
@@ -224,7 +245,7 @@ const AppContent: React.FC = () => {
                     if (session) {
                         console.log('OAuth callback successful, user logged in');
                         localStorage.setItem('app_has_visited', 'true');
-                        
+
                         // Ensure profile exists for OAuth users
                         try {
                             const { getCurrentUserProfile } = await import('./lib/userAuth');
@@ -232,10 +253,10 @@ const AppContent: React.FC = () => {
                         } catch (profileError) {
                             console.error('Error ensuring user profile exists after OAuth:', profileError);
                         }
-                        
+
                         // Clear the hash/query params from URL
                         window.history.replaceState({}, '', window.location.pathname);
-                        
+
                         // Navigate to home page
                         navigate('/', { replace: true });
                     } else if (hash?.includes('error') || searchParams.has('error')) {
@@ -312,12 +333,12 @@ const AppContent: React.FC = () => {
                     const hasQueryToken = searchParams.has('access_token') || searchParams.has('error');
 
                     if (hasHashToken || hasQueryToken) {
-                        console.log('OAuth callback detected in deep link:', { 
-                            hasHash: !!hash, 
+                        console.log('OAuth callback detected in deep link:', {
+                            hasHash: !!hash,
                             hasQuery: hasQueryToken,
-                            hashPreview: hash?.substring(0, 50) 
+                            hashPreview: hash?.substring(0, 50)
                         });
-                        
+
                         let accessToken: string | null = null;
                         let refreshToken: string | null = null;
 
@@ -326,9 +347,9 @@ const AppContent: React.FC = () => {
                             const hashParams = new URLSearchParams(hash.substring(1));
                             accessToken = hashParams.get('access_token');
                             refreshToken = hashParams.get('refresh_token');
-                            console.log('Tokens from hash:', { 
-                                hasAccessToken: !!accessToken, 
-                                hasRefreshToken: !!refreshToken 
+                            console.log('Tokens from hash:', {
+                                hasAccessToken: !!accessToken,
+                                hasRefreshToken: !!refreshToken
                             });
                         }
 
@@ -336,9 +357,9 @@ const AppContent: React.FC = () => {
                         if (!accessToken && searchParams.has('access_token')) {
                             accessToken = searchParams.get('access_token');
                             refreshToken = searchParams.get('refresh_token');
-                            console.log('Tokens from query params:', { 
-                                hasAccessToken: !!accessToken, 
-                                hasRefreshToken: !!refreshToken 
+                            console.log('Tokens from query params:', {
+                                hasAccessToken: !!accessToken,
+                                hasRefreshToken: !!refreshToken
                             });
                         }
 
@@ -362,7 +383,7 @@ const AppContent: React.FC = () => {
                                 }
                             } else {
                                 console.log('OAuth callback successful, user logged in');
-                                
+
                                 // Close the browser
                                 try {
                                     const { Browser } = await import('@capacitor/browser');
@@ -370,14 +391,14 @@ const AppContent: React.FC = () => {
                                 } catch (e) {
                                     console.warn('Could not close browser:', e);
                                 }
-                                
+
                                 // Ensure profile exists for OAuth users
                                 try {
                                     await getCurrentUserProfile();
                                 } catch (profileError) {
                                     console.error('Error ensuring user profile exists after OAuth:', profileError);
                                 }
-                                
+
                                 // Small delay to ensure browser is closed before navigation
                                 setTimeout(() => {
                                     navigate('/', { replace: true });
@@ -389,7 +410,7 @@ const AppContent: React.FC = () => {
                                 ? new URLSearchParams(hash.substring(1)).get('error')
                                 : searchParams.get('error');
                             console.error('OAuth error in deep link:', errorParam);
-                            
+
                             // Close browser and navigate to login with error
                             try {
                                 const { Browser } = await import('@capacitor/browser');
@@ -432,7 +453,7 @@ const AppContent: React.FC = () => {
                         const { supabase } = await import('./lib/supabase');
                         const { getCurrentUserProfile } = await import('./lib/userAuth');
                         const { data: { session } } = await supabase.auth.getSession();
-                        
+
                         if (session) {
                             console.log('Session found after app state change, user is logged in');
                             try {
@@ -454,13 +475,13 @@ const AppContent: React.FC = () => {
                     setTimeout(async () => {
                         const { supabase } = await import('./lib/supabase');
                         const { getCurrentUserProfile } = await import('./lib/userAuth');
-                        
+
                         // Check session multiple times with delays (deep link might take time)
                         let attempts = 0;
                         const maxAttempts = 5;
                         const checkSession = async () => {
                             const { data: { session }, error } = await supabase.auth.getSession();
-                            
+
                             if (session) {
                                 console.log('Session found after browser close, user is logged in');
                                 // Ensure profile exists for OAuth users
@@ -480,7 +501,7 @@ const AppContent: React.FC = () => {
                             }
                             return false;
                         };
-                        
+
                         await checkSession();
                     }, 1500);
                 });
@@ -582,8 +603,25 @@ const AppContent: React.FC = () => {
         <DarkModeProvider>
             <LanguageProvider value={providerValue}>
                 {isCheckingAuth ? (
-                    <div className="flex items-center justify-center min-h-screen bg-slate-50 dark:bg-slate-900">
-                        <div className="animate-spin rounded-full h-12 w-12 border-4 border-slate-200 border-t-blue-600"></div>
+                    <div className="flex flex-col items-center justify-center min-h-screen bg-slate-50 dark:bg-slate-900">
+                        <div className="animate-spin rounded-full h-12 w-12 border-4 border-slate-200 border-t-blue-600 mb-4"></div>
+                        <p className="text-slate-500 font-medium">Loading Migrant Hub...</p>
+                    </div>
+                ) : networkError ? (
+                    <div className="flex flex-col items-center justify-center min-h-screen bg-slate-50 dark:bg-slate-900 px-6 text-center">
+                        <div className="w-20 h-20 bg-red-100 dark:bg-red-900/30 text-red-600 rounded-full flex items-center justify-center mb-6">
+                            <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                        </div>
+                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Connection Error</h2>
+                        <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-sm">
+                            We couldn't connect to our servers. Please check your internet connection and try again.
+                        </p>
+                        <button
+                            onClick={() => setRetryCount(prev => prev + 1)}
+                            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-xl transition-all"
+                        >
+                            Try Again
+                        </button>
                     </div>
                 ) : isWelcome || isAuth ? (
                     // Welcome and Auth routes (full-width, no mobile layout)
