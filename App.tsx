@@ -172,6 +172,13 @@ const AppContent: React.FC = () => {
                 clearTimeout(timeoutId);
                 // Ensure we stop loading after check
                 setIsCheckingAuth(false);
+
+                // Explicitly hide the splash screen to prevent iOS white screens
+                if (Capacitor.isNativePlatform()) {
+                    import('@capacitor/splash-screen').then(({ SplashScreen }) => {
+                        SplashScreen.hide().catch((err) => console.warn('SplashScreen hide warning:', err));
+                    }).catch(err => console.warn('Failed to load SplashScreen:', err));
+                }
             }
         };
 

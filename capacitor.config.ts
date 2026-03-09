@@ -32,7 +32,7 @@ const config: CapacitorConfig = {
       // Note: Complete toolbar hiding may require custom implementation
     },
     PrivacyScreen: {
-      enable: true,
+      enable: false,
       imageName: 'Splash',
     },
   },

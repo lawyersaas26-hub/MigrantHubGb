@@ -32,10 +32,37 @@ class ErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ padding: '20px', textAlign: 'center', color: '#000' }}>
-          <h1>Something went wrong</h1>
-          <p>{this.state.error?.message}</p>
-          <button onClick={() => window.location.reload()}>Reload</button>
+        <div style={{
+          padding: '20px',
+          textAlign: 'center',
+          color: '#1e293b',
+          backgroundColor: '#f8fafc',
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontFamily: 'system-ui, -apple-system, sans-serif'
+        }}>
+          <h1 style={{ marginBottom: '16px', color: '#dc2626' }}>App Initialization Error</h1>
+          <p style={{ maxWidth: '80%', marginBottom: '24px', lineHeight: '1.5' }}>
+            {this.state.error?.message || 'An unexpected error occurred while loading the app.'}
+          </p>
+          <button
+            style={{
+              padding: '12px 24px',
+              backgroundColor: '#4f46e5',
+              color: 'white',
+              border: 'none',
+              borderRadius: '8px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              cursor: 'pointer'
+            }}
+            onClick={() => window.location.reload()}
+          >
+            Retry Loading
+          </button>
         </div>
       );
     }
