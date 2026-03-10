@@ -172,13 +172,6 @@ const AppContent: React.FC = () => {
                 clearTimeout(timeoutId);
                 // Ensure we stop loading after check
                 setIsCheckingAuth(false);
-
-                // Explicitly hide the splash screen to prevent iOS white screens
-                if (Capacitor.isNativePlatform()) {
-                    import('@capacitor/splash-screen').then(({ SplashScreen }) => {
-                        SplashScreen.hide().catch((err) => console.warn('SplashScreen hide warning:', err));
-                    }).catch(err => console.warn('Failed to load SplashScreen:', err));
-                }
             }
         };
 
@@ -188,6 +181,20 @@ const AppContent: React.FC = () => {
             if (timeoutId) clearTimeout(timeoutId);
         };
     }, [location.pathname, navigate, retryCount]);
+
+    // Handle iOS Splash Screen hiding strategically after auth concludes
+    useEffect(() => {
+        if (!isCheckingAuth && Capacitor.isNativePlatform()) {
+            // Add a small delay to allow React Router / Suspense to transition fully
+            const splashTimer = setTimeout(() => {
+                import('@capacitor/splash-screen').then(({ SplashScreen }) => {
+                    SplashScreen.hide().catch(err => console.warn('SplashScreen hide warning:', err));
+                }).catch(err => console.warn('Failed to load SplashScreen:', err));
+            }, 300); // give DOM 300ms to paint
+
+            return () => clearTimeout(splashTimer);
+        }
+    }, [isCheckingAuth]);
 
     // Handle OAuth callback for web - process URL hash/query params
     useEffect(() => {
