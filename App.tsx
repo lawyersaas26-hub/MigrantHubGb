@@ -40,6 +40,7 @@ const TopicDetail = lazy(() => import('./pages/TopicDetail'));
 const Welcome = lazy(() => import('./pages/Welcome'));
 const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
 const Help = lazy(() => import('./pages/Help'));
 const Payment = lazy(() => import('./pages/Payment'));
 const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
@@ -122,7 +123,7 @@ const AppContent: React.FC = () => {
             setNetworkError(false);
             const currentPath = location.pathname;
             const isWelcome = currentPath === '/welcome';
-            const isAuthRoute = currentPath === '/login' || currentPath === '/register';
+            const isAuthRoute = currentPath === '/login' || currentPath === '/register' || currentPath === '/forgot-password';
             const isAdmin = currentPath.startsWith('/admin');
 
             // Timeout fallback: Apple reviewers test on strict IPv6 networks that often swallow requests over IPv4 or poor connections
@@ -610,7 +611,7 @@ const AppContent: React.FC = () => {
 
     const isWebView = location.pathname.startsWith('/webview');
     const isAdmin = location.pathname.startsWith('/admin');
-    const isAuth = location.pathname === '/login' || location.pathname === '/register';
+    const isAuth = location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/forgot-password';
     const isWelcome = location.pathname === '/welcome';
 
     return (
@@ -644,6 +645,7 @@ const AppContent: React.FC = () => {
                             <Route path="/welcome" element={<Welcome />} />
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />
+                            <Route path="/forgot-password" element={<ForgotPassword />} />
                         </Routes>
                     </Suspense>
                 ) : isAdmin ? (

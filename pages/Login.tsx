@@ -23,6 +23,7 @@ const Login: React.FC = () => {
             signIn: 'چوونەژوورەوە',
             signingIn: 'جارکردن...',
             noAccount: 'هەژمارت نییە؟',
+            forgot: 'وشەی نهێنیت بیرچووە؟',
             signUp: 'دروستکردنی هەژمار',
             orContinue: 'یان بەردەوام بە',
         },
@@ -35,6 +36,7 @@ const Login: React.FC = () => {
             signIn: 'تسجيل الدخول',
             signingIn: 'جارٍ التحميل...',
             noAccount: 'ليس لديك حساب؟',
+            forgot: 'نسيت كلمة المرور؟',
             signUp: 'إنشاء حساب',
             orContinue: 'أو تابع مع',
         },
@@ -47,6 +49,7 @@ const Login: React.FC = () => {
             signIn: 'Sign In',
             signingIn: 'Signing in...',
             noAccount: "Don't have an account?",
+            forgot: 'Forgot Password?',
             signUp: 'Create Account',
             orContinue: 'Or continue with',
         },
@@ -129,6 +132,11 @@ const Login: React.FC = () => {
                                 placeholder={t.password}
                                 dir="ltr"
                             />
+                        </div>
+                        <div className={`mt-2 ${isRTL ? 'text-right' : 'text-left'}`}>
+                            <Link to="/forgot-password" className="text-[13px] font-semibold text-indigo-600 hover:text-indigo-700">
+                                {t.forgot}
+                            </Link>
                         </div>
                     </div>
 
