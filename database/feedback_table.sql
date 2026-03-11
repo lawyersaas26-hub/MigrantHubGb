@@ -27,17 +27,3 @@ ON public.user_feedback
 FOR SELECT 
 USING (auth.uid() = user_id);
 
--- Add updated_at trigger function if it doesn't exist
-DO $$
-BEGIN
-    IF NOT EXISTS (SELECT 1 FROM pg_proc WHERE proname = 'handle_updated_at') THEN
-        CREATE FUNCTION public.handle_updated_at()
-        RETURNS TRIGGER AS $$
-        BEGIN
-            NEW.updated_at = now();
-            RETURN NEW;
-        END;
-        $$ language 'plpgsql';
-    END IF;
-END
-$$;
