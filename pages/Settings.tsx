@@ -6,6 +6,7 @@ import { useDarkMode } from '../context/DarkModeContext';
 import { getCurrentUserProfile } from '../lib/userAuth';
 import type { Language } from '../types';
 import TermsPopup from '../components/TermsPopup';
+import PrivacyPopup from '../components/PrivacyPopup';
 
 const Settings: React.FC = () => {
     const navigate = useNavigate();
@@ -15,6 +16,7 @@ const Settings: React.FC = () => {
     const BackIcon = isRTL ? ArrowRight : ArrowLeft;
     const [notifications, setNotifications] = useState(true);
     const [isTermsOpen, setIsTermsOpen] = useState(false);
+    const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
 
     const settingsTranslations = {
         ku: {
@@ -210,7 +212,7 @@ const Settings: React.FC = () => {
             {/* Legal & Support */}
             <div className="space-y-3 mb-6">
                 <button
-                    onClick={() => alert('Privacy policy coming soon')}
+                    onClick={() => setIsPrivacyOpen(true)}
                     className="w-full bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm shadow-black/5 dark:shadow-black/20 border border-slate-100 dark:border-slate-700 transition-all duration-200 active:scale-[0.98] flex items-center gap-4"
                 >
                     <div className="w-11 h-11 rounded-xl bg-green-50 flex items-center justify-center">
@@ -288,6 +290,12 @@ const Settings: React.FC = () => {
             <TermsPopup 
                 isOpen={isTermsOpen} 
                 onClose={() => setIsTermsOpen(false)} 
+            />
+
+            {/* Privacy Policy Popup */}
+            <PrivacyPopup 
+                isOpen={isPrivacyOpen} 
+                onClose={() => setIsPrivacyOpen(false)} 
             />
         </div>
     );
