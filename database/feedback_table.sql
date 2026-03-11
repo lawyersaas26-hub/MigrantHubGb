@@ -32,12 +32,12 @@ DO $$
 BEGIN
     IF NOT EXISTS (SELECT 1 FROM pg_proc WHERE proname = 'handle_updated_at') THEN
         CREATE FUNCTION public.handle_updated_at()
-        RETURNS TRIGGER AS ^
+        RETURNS TRIGGER AS $$
         BEGIN
             NEW.updated_at = now();
             RETURN NEW;
         END;
-        ^ language 'plpgsql';
+        $$ language 'plpgsql';
     END IF;
 END
 $$;
