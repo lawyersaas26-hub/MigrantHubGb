@@ -1,8 +1,9 @@
 import React, { useState, FormEvent } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { signUpUser } from '../lib/userAuth';
-import { Mail, Lock, User, AlertCircle, UserPlus, CheckCircle } from 'lucide-react';
+import { Mail, Lock, User, AlertCircle, UserPlus, CheckCircle, Check } from 'lucide-react';
 import { useTranslations } from '../context/LanguageContext';
+import TermsPopup from '../components/TermsPopup';
 
 const Register: React.FC = () => {
     const [fullName, setFullName] = useState('');
@@ -12,6 +13,8 @@ const Register: React.FC = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [isTermsOpen, setIsTermsOpen] = useState(false);
+    const [acceptedTerms, setAcceptedTerms] = useState(false);
     const navigate = useNavigate();
     const { language } = useTranslations();
     const isRTL = language === 'ku' || language === 'ar';
@@ -32,6 +35,9 @@ const Register: React.FC = () => {
             orContinue: 'یان بەردەوام بە',
             passwordTooShort: 'وشەی نهێنی دەبێت لانیکەم ٦ پیت بێت',
             passwordsNotMatch: 'وشەکانی نهێنی یەکسان نین',
+            agreeTo: 'ڕازیم بە ',
+            termsOfUse: 'مەرجەکانی بەکارهێنان',
+            mustAgree: 'تکایە ڕازی بە بە مەرجەکانی بەکارهێنان',
         },
         ar: {
             title: 'إنشاء حساب',
@@ -48,6 +54,9 @@ const Register: React.FC = () => {
             orContinue: 'أو تابع مع',
             passwordTooShort: 'يجب أن تكون كلمة المرور 6 أحرف على الأقل',
             passwordsNotMatch: 'كلمات المرور غير متطابقة',
+            agreeTo: 'أوافق على ',
+            termsOfUse: 'شروط الاستخدام',
+            mustAgree: 'يرجى الموافقة على شروط الاستخدام',
         },
         en: {
             title: 'Create Account',
@@ -64,6 +73,9 @@ const Register: React.FC = () => {
             orContinue: 'Or continue with',
             passwordTooShort: 'Password must be at least 6 characters',
             passwordsNotMatch: 'Passwords do not match',
+            agreeTo: 'I agree to the ',
+            termsOfUse: 'Terms of Use',
+            mustAgree: 'Please agree to the Terms of Use',
         },
     };
 
@@ -82,6 +94,11 @@ const Register: React.FC = () => {
 
         if (password !== confirmPassword) {
             setError(t.passwordsNotMatch);
+            return;
+        }
+
+        if (!acceptedTerms) {
+            setError(t.mustAgree);
             return;
         }
 
@@ -228,6 +245,31 @@ const Register: React.FC = () => {
                             </div>
                         </div>
 
+                        {/* Terms of Use */}
+                        <div className={`pt-2 flex items-start gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                            <label className="relative flex items-center justify-center cursor-pointer mt-0.5">
+                                <input
+                                    type="checkbox"
+                                    checked={acceptedTerms}
+                                    onChange={(e) => setAcceptedTerms(e.target.checked)}
+                                    className="peer sr-only"
+                                />
+                                <div className="w-5 h-5 border-2 rounded-md border-slate-300 peer-checked:bg-indigo-600 peer-checked:border-indigo-600 transition-all flex items-center justify-center bg-white">
+                                    <Check size={14} className="text-white opacity-0 peer-checked:opacity-100" strokeWidth={3} />
+                                </div>
+                            </label>
+                            <p className={`text-sm text-slate-600 leading-tight ${isRTL ? 'text-right' : 'text-left'}`}>
+                                {t.agreeTo}
+                                <button
+                                    type="button"
+                                    onClick={(e) => { e.preventDefault(); setIsTermsOpen(true); }}
+                                    className="text-indigo-600 hover:text-indigo-700 font-bold underline px-1"
+                                >
+                                    {t.termsOfUse}
+                                </button>
+                            </p>
+                        </div>
+
                         {/* Sign In Link */}
                         <div className={`pt-2 text-center ${isRTL ? 'text-right' : 'text-left'}`}>
                             <p className="text-sm text-slate-600">
@@ -255,7 +297,7 @@ const Register: React.FC = () => {
                     <form onSubmit={handleSubmit} className="w-full">
                         <button
                             type="submit"
-                            disabled={loading || success}
+                            disabled={loading || success || !acceptedTerms}
                             className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 rounded-xl font-bold text-base hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-indigo-500/20 active:scale-[0.98]"
                         >
                             {loading ? t.creating : success ? t.success : t.signUp}
@@ -263,6 +305,12 @@ const Register: React.FC = () => {
                     </form>
                 </div>
             </div>
+
+            {/* Terms of Use Popup */}
+            <TermsPopup 
+                isOpen={isTermsOpen} 
+                onClose={() => setIsTermsOpen(false)} 
+            />
         </div>
     );
 };

@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowRight, ArrowLeft, Bell, Moon, Sun, Globe, Shield, HelpCircle, FileText, Trash2 } from 'lucide-react';
 import { useTranslations } from '../context/LanguageContext';
 import { useDarkMode } from '../context/DarkModeContext';
-import { getCurrentUserProfile, updateUserProfile } from '../lib/userAuth';
+import { getCurrentUserProfile } from '../lib/userAuth';
 import type { Language } from '../types';
+import TermsPopup from '../components/TermsPopup';
 
 const Settings: React.FC = () => {
     const navigate = useNavigate();
@@ -13,6 +14,7 @@ const Settings: React.FC = () => {
     const isRTL = language === 'ku' || language === 'ar';
     const BackIcon = isRTL ? ArrowRight : ArrowLeft;
     const [notifications, setNotifications] = useState(true);
+    const [isTermsOpen, setIsTermsOpen] = useState(false);
 
     const settingsTranslations = {
         ku: {
@@ -242,7 +244,7 @@ const Settings: React.FC = () => {
                 </button>
 
                 <button
-                    onClick={() => alert('Terms of Service coming soon')}
+                    onClick={() => setIsTermsOpen(true)}
                     className="w-full bg-white rounded-2xl p-5 shadow-sm shadow-black/5 border border-slate-100 transition-all duration-200 active:scale-[0.98] flex items-center gap-4"
                 >
                     <div className="w-11 h-11 rounded-xl bg-purple-50 flex items-center justify-center">
@@ -281,6 +283,12 @@ const Settings: React.FC = () => {
                     {t.deleteAccount}
                 </button>
             </div>
+
+            {/* Terms of Use Popup */}
+            <TermsPopup 
+                isOpen={isTermsOpen} 
+                onClose={() => setIsTermsOpen(false)} 
+            />
         </div>
     );
 };
