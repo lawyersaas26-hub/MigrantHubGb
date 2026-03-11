@@ -4,7 +4,7 @@ CREATE TYPE feedback_type AS ENUM ('bug_report', 'feature_request', 'general_fee
 -- Create feedback table
 CREATE TABLE IF NOT EXISTS public.user_feedback (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-    user_id UUID REFERENCES public.user_profiles(id) ON DELETE SET NULL,
+    user_id UUID REFERENCES auth.users(id) ON DELETE SET NULL,
     user_email VARCHAR(255),
     feedback_type feedback_type NOT NULL,
     message TEXT NOT NULL,
