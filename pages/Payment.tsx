@@ -410,7 +410,7 @@ const Payment: React.FC = () => {
                 // Get the product
                 const product = Store.get(productId);
                 if (!product) {
-                    reject(new Error(`Product ${productId} not found. Make sure it's registered in Google Play Console.`));
+                    reject(new Error(`Product ${productId} not found. Make sure it's registered in the developer console.`));
                     return;
                 }
 
@@ -961,11 +961,17 @@ const Payment: React.FC = () => {
 
                 {Capacitor.isNativePlatform() && (
                     <p className="mt-4 text-xs text-slate-500 dark:text-slate-400 text-center">
-                        {language === 'ku'
-                            ? 'پارەدان لە ڕێگەی Google Play دەکرێت'
-                            : language === 'ar'
-                                ? 'سيتم الدفع عبر Google Play'
-                                : 'Payment will be processed through Google Play'
+                        {Capacitor.getPlatform() === 'ios'
+                            ? (language === 'ku'
+                                ? 'پارەدان لە ڕێگەی App Store دەکرێت'
+                                : language === 'ar'
+                                    ? 'سيتم الدفع عبر App Store'
+                                    : 'Payment will be processed through the App Store')
+                            : (language === 'ku'
+                                ? 'پارەدان لە ڕێگەی Google Play دەکرێت'
+                                : language === 'ar'
+                                    ? 'سيتم الدفع عبر Google Play'
+                                    : 'Payment will be processed through Google Play')
                         }
                     </p>
                 )}
@@ -980,25 +986,49 @@ const Payment: React.FC = () => {
                             <h4 className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                                 {language === 'ku' ? 'مەرجەکان' : language === 'ar' ? 'الشروط' : 'Terms'}
                             </h4>
-                            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
                                 {language === 'ku'
-                                    ? 'بە پارەدان، تۆ ڕازیت بە مەرجەکانی بەکارهێنان. بەشداریکردنەکەت بە شێوەیەکی خۆکار نوێ دەکرێتەوە هەر مانگێک. دەتوانیت لە هەر کاتێکدا هەڵوەشێنیتەوە.'
+                                    ? 'بە پارەدان، تۆ ڕازیت بە مەرجەکانی بەکارهێنان و سیاسەتی تایبەتمەندی. پارەدان لە هەژمارەکەت دەبڕدرێت لە کاتی دووپاتکردنەوەی کڕین. بەشداریکردنەکەت بە شێوەیەکی خۆکار نوێ دەکرێتەوە هەر مانگێک. دەتوانیت لە هەر کاتێکدا هەڵوەشێنیتەوە.'
                                     : language === 'ar'
-                                        ? 'بالدفع، أنت توافق على شروط الاستخدام. سيتم تجديد اشتراكك تلقائيا كل شهر. يمكنك الإلغاء في أي وقت.'
-                                        : 'By paying, you agree to our terms of service. Your subscription will auto-renew monthly. You can cancel anytime.'
+                                        ? 'بالدفع، أنت توافق على شروط الاستخدام وسياسة الخصوصية. سيتم خصم الدفع من حسابك عند تأكيد الشراء. سيتم تجديد اشتراكك تلقائيا كل شهر. يمكنك الإلغاء في أي وقت.'
+                                        : 'By paying, you agree to our Terms of Use (EULA) and Privacy Policy. Payment will be charged to your account at confirmation of purchase. Your subscription will auto-renew monthly. You can cancel anytime.'
                                 }
                             </p>
+                            <div className="flex flex-col gap-2 mt-2">
+                                <a 
+                                    href="https://sites.google.com/view/migranthubterms/" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="text-xs text-indigo-600 dark:text-indigo-400 font-medium hover:underline flex items-center gap-1 active:opacity-70 transition-opacity"
+                                >
+                                    {language === 'ku' ? 'مەرجەکانی بەکارهێنان (EULA)' : language === 'ar' ? 'شروط الاستخدام (EULA)' : 'Terms of Use (EULA)'}
+                                </a>
+                                <a 
+                                    href="https://sites.google.com/view/migranthubgb/" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="text-xs text-indigo-600 dark:text-indigo-400 font-medium hover:underline flex items-center gap-1 active:opacity-70 transition-opacity"
+                                >
+                                    {language === 'ku' ? 'سیاسەتی تایبەتمەندی' : language === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div className="text-xs text-slate-500 dark:text-slate-400 text-center">
                     <p>
-                        {language === 'ku'
-                            ? 'پارەدانەکان لە ڕێگەی Google Play Billing دەکرێن (بۆ ئەندرۆید)'
-                            : language === 'ar'
-                                ? 'يتم الدفع عبر Google Play Billing (لـ Android)'
-                                : 'Payments are processed through Google Play Billing (for Android)'
+                        {Capacitor.getPlatform() === 'ios'
+                            ? (language === 'ku'
+                                ? 'پارەدانەکان لە ڕێگەی هەژماری Apple دەکرێن (بۆ iOS)'
+                                : language === 'ar'
+                                    ? 'يتم الدفع عبر حساب Apple (لـ iOS)'
+                                    : 'Payments are processed through your Apple account (for iOS)')
+                            : (language === 'ku'
+                                ? 'پارەدانەکان لە ڕێگەی Google Play Billing دەکرێن (بۆ ئەندرۆید)'
+                                : language === 'ar'
+                                    ? 'يتم الدفع عبر Google Play Billing (لـ Android)'
+                                    : 'Payments are processed through Google Play Billing (for Android)')
                         }
                     </p>
                 </div>
