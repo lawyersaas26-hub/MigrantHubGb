@@ -834,7 +834,7 @@ const Payment: React.FC = () => {
     }
 
     return (
-        <div className="px-5 py-8">
+        <div className="px-5 py-8 pb-28 mb-10 relative">
             {/* Header */}
             <div className="flex items-center gap-4 mb-6 pt-6">
                 <button
@@ -975,11 +975,10 @@ const Payment: React.FC = () => {
                         }
                     </p>
                 )}
-            </div>
 
-            {/* Terms and Info */}
-            <div className="space-y-4">
-                <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border border-slate-100 dark:border-slate-700">
+                {/* Terms and Info Moved Inside Card */}
+                <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-700">
+                    <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border border-slate-100 dark:border-slate-700">
                     <div className="flex items-start gap-3">
                         <Lock size={18} className="text-slate-600 dark:text-slate-400 mt-0.5 flex-shrink-0" />
                         <div className="flex-1">
@@ -1015,7 +1014,10 @@ const Payment: React.FC = () => {
                         </div>
                     </div>
                 </div>
+            </div> {/* End of Terms wrapper */}
+            </div> {/* End of Plan Summary Card */}
 
+            <div className="space-y-4">
                 <div className="text-xs text-slate-500 dark:text-slate-400 text-center">
                     <p>
                         {Capacitor.getPlatform() === 'ios'
@@ -1032,7 +1034,7 @@ const Payment: React.FC = () => {
                         }
                     </p>
                 </div>
-            </div>
+            </div> {/* End of space-y-4 */}
         </div>
     );
 };
