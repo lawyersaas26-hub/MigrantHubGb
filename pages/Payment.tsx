@@ -976,21 +976,55 @@ const Payment: React.FC = () => {
                     </p>
                 )}
 
-                {/* Terms and Info Moved Inside Card */}
+                {/* Subscription Details & Legal Info - Required by Apple */}
                 <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-700">
+                    {/* Subscription Summary */}
+                    <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border border-slate-100 dark:border-slate-700 mb-3">
+                        <h4 className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2.5">
+                            {language === 'ku' ? 'وردەکاری بەشداریکردن' : language === 'ar' ? 'تفاصيل الاشتراك' : 'Subscription Details'}
+                        </h4>
+                        <div className="space-y-1.5">
+                            <div className="flex justify-between text-xs">
+                                <span className="text-slate-500 dark:text-slate-400">
+                                    {language === 'ku' ? 'ناو:' : language === 'ar' ? 'الاسم:' : 'Plan:'}
+                                </span>
+                                <span className="font-semibold text-slate-700 dark:text-slate-300">
+                                    {currentPlan.name} {language === 'ku' ? 'پلان' : language === 'ar' ? 'خطة' : 'Plan'}
+                                </span>
+                            </div>
+                            <div className="flex justify-between text-xs">
+                                <span className="text-slate-500 dark:text-slate-400">
+                                    {language === 'ku' ? 'ماوە:' : language === 'ar' ? 'المدة:' : 'Duration:'}
+                                </span>
+                                <span className="font-semibold text-slate-700 dark:text-slate-300">
+                                    {language === 'ku' ? '١ مانگ (نوێکردنەوەی خۆکار)' : language === 'ar' ? 'شهر واحد (تجديد تلقائي)' : '1 Month (Auto-Renewable)'}
+                                </span>
+                            </div>
+                            <div className="flex justify-between text-xs">
+                                <span className="text-slate-500 dark:text-slate-400">
+                                    {language === 'ku' ? 'نرخ:' : language === 'ar' ? 'السعر:' : 'Price:'}
+                                </span>
+                                <span className="font-semibold text-slate-700 dark:text-slate-300">
+                                    {currentPlan.price}{language === 'ku' ? '/مانگ' : language === 'ar' ? '/شهر' : '/month'}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Auto-Renewal Terms */}
                     <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border border-slate-100 dark:border-slate-700">
                     <div className="flex items-start gap-3">
                         <Lock size={18} className="text-slate-600 dark:text-slate-400 mt-0.5 flex-shrink-0" />
                         <div className="flex-1">
                             <h4 className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                                {language === 'ku' ? 'مەرجەکان' : language === 'ar' ? 'الشروط' : 'Terms'}
+                                {language === 'ku' ? 'مەرجەکان و نوێکردنەوەی خۆکار' : language === 'ar' ? 'الشروط والتجديد التلقائي' : 'Terms & Auto-Renewal'}
                             </h4>
                             <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
                                 {language === 'ku'
-                                    ? 'بە پارەدان، تۆ ڕازیت بە مەرجەکانی بەکارهێنان و سیاسەتی تایبەتمەندی. پارەدان لە هەژمارەکەت دەبڕدرێت لە کاتی دووپاتکردنەوەی کڕین. بەشداریکردنەکەت بە شێوەیەکی خۆکار نوێ دەکرێتەوە هەر مانگێک. دەتوانیت لە هەر کاتێکدا هەڵوەشێنیتەوە.'
+                                    ? 'بە پارەدان، تۆ ڕازیت بە مەرجەکانی بەکارهێنان (EULA) و سیاسەتی تایبەتمەندی. پارەدان لە هەژمارەکەت دەبڕدرێت لە کاتی دووپاتکردنەوەی کڕین. بەشداریکردنەکەت بە شێوەیەکی خۆکار نوێ دەکرێتەوە هەر مانگێک تا کە هەڵیوەشێنیت. بۆ هەڵوەشاندنەوە، لانیکەم ٢٤ کاتژمێر پێش کۆتایی ماوەکە هەڵیوەشێنەوە.'
                                     : language === 'ar'
-                                        ? 'بالدفع، أنت توافق على شروط الاستخدام وسياسة الخصوصية. سيتم خصم الدفع من حسابك عند تأكيد الشراء. سيتم تجديد اشتراكك تلقائيا كل شهر. يمكنك الإلغاء في أي وقت.'
-                                        : 'By paying, you agree to our Terms of Use (EULA) and Privacy Policy. Payment will be charged to your account at confirmation of purchase. Your subscription will auto-renew monthly. You can cancel anytime.'
+                                        ? 'بالدفع، أنت توافق على شروط الاستخدام (EULA) وسياسة الخصوصية. سيتم خصم الدفع من حسابك عند تأكيد الشراء. سيتم تجديد اشتراكك تلقائيًا كل شهر حتى تقوم بالإلغاء. للإلغاء، قم بذلك قبل 24 ساعة على الأقل من نهاية الفترة الحالية.'
+                                        : 'By subscribing, you agree to our Terms of Use (EULA) and Privacy Policy. Payment is charged to your Apple ID account at confirmation of purchase. Subscription automatically renews each month unless cancelled at least 24 hours before the end of the current period. You can manage or cancel your subscription at any time in your device\'s App Store settings.'
                                 }
                             </p>
                             <div className="flex flex-col gap-2 mt-2">
@@ -1000,7 +1034,7 @@ const Payment: React.FC = () => {
                                     rel="noopener noreferrer"
                                     className="text-xs text-indigo-600 dark:text-indigo-400 font-medium hover:underline flex items-center gap-1 active:opacity-70 transition-opacity"
                                 >
-                                    {language === 'ku' ? 'مەرجەکانی بەکارهێنان (EULA)' : language === 'ar' ? 'شروط الاستخدام (EULA)' : 'Terms of Use (EULA)'}
+                                    {language === 'ku' ? '📄 مەرجەکانی بەکارهێنان (EULA)' : language === 'ar' ? '📄 شروط الاستخدام (EULA)' : '📄 Terms of Use (EULA)'}
                                 </a>
                                 <a 
                                     href="https://sites.google.com/view/migranthubgb/" 
@@ -1008,13 +1042,13 @@ const Payment: React.FC = () => {
                                     rel="noopener noreferrer"
                                     className="text-xs text-indigo-600 dark:text-indigo-400 font-medium hover:underline flex items-center gap-1 active:opacity-70 transition-opacity"
                                 >
-                                    {language === 'ku' ? 'سیاسەتی تایبەتمەندی' : language === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}
+                                    {language === 'ku' ? '🔒 سیاسەتی تایبەتمەندی' : language === 'ar' ? '🔒 سياسة الخصوصية' : '🔒 Privacy Policy'}
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> {/* End of Terms wrapper */}
+            </div> {/* End of Subscription Details wrapper */}
             </div> {/* End of Plan Summary Card */}
 
             <div className="space-y-4">
