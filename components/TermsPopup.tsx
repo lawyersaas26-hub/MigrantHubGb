@@ -51,6 +51,22 @@ const TermsPopup: React.FC<TermsPopupProps> = ({ isOpen, onClose }) => {
                         
                         <p>By using MigrantHub GB, you agree to the following terms.</p>
                         
+                        {/* Subscription Section - Required by Apple App Store - MOVED TO TOP FOR VISIBILITY */}
+                        <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800 my-4">
+                            <h3 className="text-lg font-bold text-indigo-900 dark:text-indigo-100 mb-2">
+                                {language === 'ku' ? 'بەشداریکردن و نوێکردنەوەی خۆکار' : language === 'ar' ? 'الاشتراكات والتجديد التلقائي' : 'Subscriptions and Auto-Renewal'}
+                            </h3>
+                            <p className="text-sm font-bold text-slate-900 dark:text-slate-100 mb-2">MigrantHub GB offers the following auto-renewable subscription plans:</p>
+                            <ul className="list-disc pl-5 space-y-2 mb-4">
+                                <li><strong>Light Plan</strong> — £6.99/month. Access to all resources, search functionality, favorites, and immigration information.</li>
+                                <li><strong>Gold Plan</strong> — £19.99/month. All Light features plus access to job listings, lawyers, accountants, driving instructors, and car listings.</li>
+                                <li><strong>Business Plan</strong> — £39.99/month. All Gold features plus the ability to post listings, priority support, and unlimited listings.</li>
+                            </ul>
+                            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Subscriptions automatically renew each month unless cancelled at least 24 hours before the renewal date. Payment is charged to your Apple ID account at confirmation of purchase. Your account will be charged for renewal within 24 hours prior to the end of the current period. You can manage or cancel your subscription at any time in your device's App Store subscription settings. No refund is provided for any unused section of a subscription period.
+                            </p>
+                        </div>
+
                         <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 mt-6 mb-2">Platform Purpose</h3>
                         <p>The app connects migrant communities in the UK, particularly Kurdish and Arab communities, with useful services and information such as:</p>
                         <ul className="list-disc pl-5 space-y-1">
@@ -60,16 +76,6 @@ const TermsPopup: React.FC<TermsPopupProps> = ({ isOpen, onClose }) => {
                             <li>Driving instructors</li>
                             <li>Information to help people settle in the UK</li>
                         </ul>
-
-                        {/* Subscription Section - Required by Apple App Store */}
-                        <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 mt-6 mb-2">Subscriptions and Auto-Renewal</h3>
-                        <p>MigrantHub GB offers the following auto-renewable subscription plans:</p>
-                        <ul className="list-disc pl-5 space-y-2">
-                            <li><strong>Light Plan</strong> — £6.99/month. Access to all resources, search functionality, favorites, and immigration information.</li>
-                            <li><strong>Gold Plan</strong> — £19.99/month. All Light features plus access to job listings, lawyers, accountants, driving instructors, and car listings.</li>
-                            <li><strong>Business Plan</strong> — £39.99/month. All Gold features plus the ability to post listings, priority support, and unlimited listings.</li>
-                        </ul>
-                        <p>Subscriptions automatically renew each month unless cancelled at least 24 hours before the renewal date. Payment is charged to your Apple ID account at confirmation of purchase. Your account will be charged for renewal within 24 hours prior to the end of the current period. You can manage or cancel your subscription at any time in your device's App Store subscription settings. No refund is provided for any unused portion of a subscription period.</p>
 
                         <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 mt-6 mb-2">Platform Role</h3>
                         <p>MigrantHub GB acts only as a platform connecting users with service providers. We do not own, manage, or guarantee the services offered by third parties.</p>
